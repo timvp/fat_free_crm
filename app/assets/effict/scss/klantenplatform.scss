@@ -1,0 +1,459 @@
+
+$zwart: #4a4a4a;
+$donkerdergrijs: #636362;
+$donkergrijs: #b8b6b4;
+$grijs: #ECEAE9/*#e0dddb*/;
+$lichtgrijs: #f8f5f2;
+$lichtergrijs: #fffcf9;
+
+
+$lichtgroen: #cace80;
+$groen: #9fa617;
+
+
+@mixin box_groot {
+	display: block;
+	border-radius: 4px;
+	padding: 10px;
+	box-shadow: 0px 0px 8px 1px $donkerdergrijs;
+
+}
+
+@mixin box_klein {
+	display: block;
+	padding: 10px;
+	border-radius: 4px;
+	box-shadow:  1px 1px 8px 1px $donkerdergrijs;
+}
+
+@mixin box_lijst {
+	display: block;
+	padding: 10px;
+	border: solid 1px $donkergrijs;
+	border-radius: 4px;
+	border-top: solid 1px $donkerdergrijs;
+	border-bottom: solid 1px $lichtgrijs;
+	background: #c5c2c1;
+	box-shadow: inset 0px 0px 3px $donkerdergrijs;
+	}
+	
+@mixin zwart_gradient {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$zwart', endColorstr='#000000');
+  background: -moz-linear-gradient(top, $zwart 0%, #000000 150%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $zwart), color-stop(150%, #000000));
+  background: -webkit-linear-gradient(top, $zwart 0%, #000000 150%);
+  background: -o-linear-gradient(top, $zwart 0%, #000000 150%);
+  background: -ms-linear-gradient(top, $zwart 0%, #000000 150%);
+  background: linear-gradient(top, $zwart 0%, #000000 150%);
+}
+
+@mixin groen_gradient {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$lichtgroen', endColorstr='$groen');
+  background: -moz-linear-gradient(top, $lichtgroen 0%, $groen 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $lichtgroen), color-stop(50%, $groen));
+  background: -webkit-linear-gradient(top, $lichtgroen 0%, $groen 50%);
+  background: -o-linear-gradient(top, $lichtgroen 0%, $groen 50%);
+  background: -ms-linear-gradient(top, $lichtgroen 0%, $groen 50%);
+  background: linear-gradient(top, $lichtgroen 0%, $groen 50%);
+}
+
+
+ul, ol {
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	list-style: none;
+	
+}
+
+a {
+	text-decoration: none;
+	color: $groen;
+}
+
+h4 {
+	margin-bottom: 10px;
+}
+
+.ui-state-error {
+	padding: 20px;
+	border-radius: 4px;
+}
+
+/* !LigatureSymbols */
+
+@font-face {
+    font-family: 'LigatureSymbols';
+    src: url('../LigatureSymbols/LigatureSymbols-2.09.eot');
+    src: url('../LigatureSymbols/LigatureSymbols-2.09.eot?#iefix') format('embedded-opentype'),
+         url('../LigatureSymbols/LigatureSymbols-2.09.woff') format('woff'),
+         url('../LigatureSymbols/LigatureSymbols-2.09.ttf') format('truetype'),
+         url('../LigatureSymbols/LigatureSymbols-2.09.svg#LigatureSymbols') format('svg');
+    src: url('../LigatureSymbols/LigatureSymbols-2.09.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.lsf {
+  font-family: 'LigatureSymbols';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.lsf-icon:before {
+  content:attr(title);
+  margin-right:0.3em;
+  font-size:130%;
+  font-family: 'LigatureSymbols';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+body {
+	background: $lichtgrijs url(../img/body_bg.png) repeat;
+	font-family: verdana, tahoma, arial, sans-serif;
+	font-size: 13px;
+}
+
+#container {
+	position: relative;
+	width: 1000px;
+	margin: 0 auto;
+	
+}
+
+header {
+	height: 160px;
+}
+
+footer {
+	margin: 10px auto;
+	width: 1000px;
+	padding-right: 40px;
+	text-align: right;
+	color: $donkerdergrijs;
+}
+
+h4 {
+	color: $groen;
+
+}
+
+#mainmenu {
+	width: 150px;
+	
+	float: left;
+	margin: 50px 0 0 20px;
+	font-size: 1.2em;
+	
+}
+
+#window {
+	position: relative;
+	background: $grijs;
+	width: 760px;
+	min-height: 300px;
+	float: left;
+	@include box_groot;
+	margin: 40px 0 0 20px;
+}
+
+.ui-tabs-panel {
+	min-height: 300px;
+}
+
+.window_links {
+	width: 470px;
+	float: left;
+	
+}
+
+.window_rechts {
+	width: 270px;
+	float: right;
+	margin-left: 10px;
+	padding-left: 10px;
+
+
+
+
+}
+
+
+
+/*  !linkernavigatie */
+
+#mainmenu ul {
+	float: right;
+	padding: 0;
+	margin: 0;
+	
+}
+
+#mainmenu ul li a:link, #mainmenu ul li a:visited {
+	background: $zwart;
+	width: 130px ;
+	height: 30px;
+	padding: 10px;
+	text-decoration: none;
+	color: $grijs;
+	margin-bottom: 10px;
+	text-align: right;
+	@include box_klein;
+	@include zwart_gradient;
+}	
+
+	
+#mainmenu ul li a:hover, #mainmenu ul li a:active {
+	background: $groen;
+	@include groen_gradient;
+}
+
+
+/* !header */
+
+header h1 {
+	text-indent: -9999px;
+	background: transparent url(../img/ht_klantenplatform_logo.png) no-repeat;
+	width: 282px;
+	height: 82px;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+}
+
+/* !topnavigatie */
+
+#topmenu {
+	float: right;
+
+
+}
+
+#topmenu ul {
+	margin: 0 20px 0 0;
+	padding: 0;
+}
+#topmenu ul li {
+	float: left;
+	}
+	
+#topmenu  ul li a:link, #topmenu ul li a:visited {
+	height: 42px;
+	width: 42px;
+	text-decoration: none;
+	color: $donkerdergrijs;
+	font-size: 2em;
+	background: $zwart;
+	text-align: center;
+	margin: 0 5px;
+	@include box_klein;
+		border-radius: 0 0 4px 4px; 
+		padding: 0;
+	@include zwart_gradient;
+}
+
+#topmenu  ul li a:hover, #topmenu ul li a:active {
+	color: $groen;
+}
+
+
+/* !navigatiebalk */
+
+#navigatiebalk {
+	@include box_groot;
+		background: $grijs;
+	
+	margin: 0 20px 30px 20px;
+}
+	
+#searchbox {
+	float: right;
+	
+}
+
+
+#searchbox input {
+	@include box_lijst;
+		padding: 3px 10px;
+}
+
+#searchbox span, #searchbox input {
+	float: left;
+}
+
+
+#navigatiebalk nav {
+	float: left;
+}
+	
+/* !window lijsten */
+
+.window_links li {
+	@include box_lijst;
+}	
+
+.window_links li.active {
+	background: $lichtgroen;
+	}
+
+.window_links {
+	li:last-child {
+		border-bottom: none;
+	}
+	li:first-child {
+		border-top: none;
+	}
+}
+	
+	
+.window_links .clickable li:hover {
+		background: $groen;
+		@include groen_gradient;
+		cursor: pointer;
+		
+}
+
+.showmore:link, .showmore:visited {
+	display: block;
+	text-align: center;
+	background: $groen;
+	border-radius: 4px;
+	box-shadow: 2px 2px 8px $donkerdergrijs;
+	color: #fff;
+	margin-top: 10px;
+}
+
+.showmore:hover, .showmore:active {
+	background: #fff;
+	color: $groen;
+}
+
+.window_rechts {
+	h4 {
+		border-bottom: solid 1px $donkergrijs;
+		}
+	ul {
+		margin-left: 10px;
+	}
+}
+
+/* !window tabs */
+#window.tabs {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	margin-top: 0px;
+	width: 780px;
+	
+}
+
+.ui-tabs-nav {
+	background: transparent;
+	border: none;
+}
+
+.ui-tabs .ui-tabs-panel {
+	padding: 10px;
+	box-shadow: 0px 4px 8px 1px $donkerdergrijs;
+	background: $grijs;
+}
+
+
+/* !accordions */
+
+.accordion {
+	margin-top: 30px;
+}
+
+/* !tabellen */
+
+thead {
+	background: $lichtgroen;
+	
+}
+
+table {
+	border: 1px solid $lichtgroen;
+	width: 100%;
+	border-radius: 4px;
+}
+
+tbody tr {
+	border-bottom: dotted 1px $lichtergrijs;
+}
+
+/*tr:nth-child(even) {
+	background: $lichtgroen;
+}
+*/
+td, th {
+	/*width: 200px;*/
+	padding: 5px;
+}
+
+th[title="sort"] {
+	cursor: pointer;
+}
+
+
+.clickable tbody tr:hover {
+	cursor: pointer;
+	background: $groen;
+}
+
+tbody tr.active {
+	background: $lichtgroen;
+}
+
+.aanwezigheden tbody td {
+	text-align: center;
+}
+
+
+/* !downloads */
+
+.downloads li {
+	
+	@include box_lijst;
+}
+
+.downloads li:hover {
+	@include groen_gradient;
+}
+
+.downloads .file {
+	padding-left: 20px;
+	display: block;
+}
+
+.word {
+	background: url(../img/file_icons/doc.png) no-repeat left center;
+}
+
+.zip {
+	background: url(../img/file_icons/zip.png) no-repeat left center;
+}
+
+.pdf {
+	background: url(../img/file_icons/pdf.png) no-repeat left center;
+}
+
+.mp3 {
+	background: url(../img/file_icons/mp3.png) no-repeat left center;
+}

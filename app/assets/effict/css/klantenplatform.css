@@ -1,0 +1,476 @@
+/* line 61, ../scss/klantenplatform.scss */
+ul, ol {
+  margin: 0px;
+  padding: 0px;
+  text-indent: 0px;
+  list-style: none;
+}
+
+/* line 69, ../scss/klantenplatform.scss */
+a {
+  text-decoration: none;
+  color: #9fa617;
+}
+
+/* line 74, ../scss/klantenplatform.scss */
+h4 {
+  margin-bottom: 10px;
+}
+
+/* line 78, ../scss/klantenplatform.scss */
+.ui-state-error {
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/* !LigatureSymbols */
+@font-face {
+  font-family: 'LigatureSymbols';
+  src: url("../LigatureSymbols/LigatureSymbols-2.09.eot");
+  src: url("../LigatureSymbols/LigatureSymbols-2.09.eot?#iefix") format("embedded-opentype"), url("../LigatureSymbols/LigatureSymbols-2.09.woff") format("woff"), url("../LigatureSymbols/LigatureSymbols-2.09.ttf") format("truetype"), url("../LigatureSymbols/LigatureSymbols-2.09.svg#LigatureSymbols") format("svg");
+  src: url("../LigatureSymbols/LigatureSymbols-2.09.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 97, ../scss/klantenplatform.scss */
+.lsf {
+  font-family: 'LigatureSymbols';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+/* line 111, ../scss/klantenplatform.scss */
+.lsf-icon:before {
+  content: attr(title);
+  margin-right: 0.3em;
+  font-size: 130%;
+  font-family: 'LigatureSymbols';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+/* line 127, ../scss/klantenplatform.scss */
+body {
+  background: #f8f5f2 url(../img/body_bg.png) repeat;
+  font-family: verdana, tahoma, arial, sans-serif;
+  font-size: 13px;
+}
+
+/* line 133, ../scss/klantenplatform.scss */
+#container {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+/* line 140, ../scss/klantenplatform.scss */
+header {
+  height: 160px;
+}
+
+/* line 144, ../scss/klantenplatform.scss */
+footer {
+  margin: 10px auto;
+  width: 1000px;
+  padding-right: 40px;
+  text-align: right;
+  color: #636362;
+}
+
+/* line 152, ../scss/klantenplatform.scss */
+h4 {
+  color: #9fa617;
+}
+
+/* line 157, ../scss/klantenplatform.scss */
+#mainmenu {
+  width: 150px;
+  float: left;
+  margin: 50px 0 0 20px;
+  font-size: 1.2em;
+}
+
+/* line 166, ../scss/klantenplatform.scss */
+#window {
+  position: relative;
+  background: #eceae9;
+  width: 760px;
+  min-height: 300px;
+  float: left;
+  display: block;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0px 0px 8px 1px #636362;
+  margin: 40px 0 0 20px;
+}
+
+/* line 176, ../scss/klantenplatform.scss */
+.ui-tabs-panel {
+  min-height: 300px;
+}
+
+/* line 180, ../scss/klantenplatform.scss */
+.window_links {
+  width: 470px;
+  float: left;
+}
+
+/* line 186, ../scss/klantenplatform.scss */
+.window_rechts {
+  width: 270px;
+  float: right;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+/*  !linkernavigatie */
+/* line 201, ../scss/klantenplatform.scss */
+#mainmenu ul {
+  float: right;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 208, ../scss/klantenplatform.scss */
+#mainmenu ul li a:link, #mainmenu ul li a:visited {
+  background: #4a4a4a;
+  width: 130px;
+  height: 30px;
+  padding: 10px;
+  text-decoration: none;
+  color: #eceae9;
+  margin-bottom: 10px;
+  text-align: right;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 8px 1px #636362;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$zwart', endColorstr='#000000');
+  background: -moz-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4a4a4a), color-stop(150%, black));
+  background: -webkit-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -o-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -ms-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: linear-gradient(top, #4a4a4a 0%, #000000 150%);
+}
+
+/* line 222, ../scss/klantenplatform.scss */
+#mainmenu ul li a:hover, #mainmenu ul li a:active {
+  background: #9fa617;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$lichtgroen', endColorstr='$groen');
+  background: -moz-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cace80), color-stop(50%, #9fa617));
+  background: -webkit-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -o-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -ms-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: linear-gradient(top, #cace80 0%, #9fa617 50%);
+}
+
+/* !header */
+/* line 230, ../scss/klantenplatform.scss */
+header h1 {
+  text-indent: -9999px;
+  background: transparent url(../img/ht_klantenplatform_logo.png) no-repeat;
+  width: 282px;
+  height: 82px;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+
+/* !topnavigatie */
+/* line 242, ../scss/klantenplatform.scss */
+#topmenu {
+  float: right;
+}
+
+/* line 248, ../scss/klantenplatform.scss */
+#topmenu ul {
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+
+/* line 252, ../scss/klantenplatform.scss */
+#topmenu ul li {
+  float: left;
+}
+
+/* line 256, ../scss/klantenplatform.scss */
+#topmenu ul li a:link, #topmenu ul li a:visited {
+  height: 42px;
+  width: 42px;
+  text-decoration: none;
+  color: #636362;
+  font-size: 2em;
+  background: #4a4a4a;
+  text-align: center;
+  margin: 0 5px;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 8px 1px #636362;
+  border-radius: 0 0 4px 4px;
+  padding: 0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$zwart', endColorstr='#000000');
+  background: -moz-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4a4a4a), color-stop(150%, black));
+  background: -webkit-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -o-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: -ms-linear-gradient(top, #4a4a4a 0%, black 150%);
+  background: linear-gradient(top, #4a4a4a 0%, #000000 150%);
+}
+
+/* line 271, ../scss/klantenplatform.scss */
+#topmenu ul li a:hover, #topmenu ul li a:active {
+  color: #9fa617;
+}
+
+/* !navigatiebalk */
+/* line 278, ../scss/klantenplatform.scss */
+#navigatiebalk {
+  display: block;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0px 0px 8px 1px #636362;
+  background: #eceae9;
+  margin: 0 20px 30px 20px;
+}
+
+/* line 285, ../scss/klantenplatform.scss */
+#searchbox {
+  float: right;
+}
+
+/* line 291, ../scss/klantenplatform.scss */
+#searchbox input {
+  display: block;
+  padding: 10px;
+  border: solid 1px #b8b6b4;
+  border-radius: 4px;
+  border-top: solid 1px #636362;
+  border-bottom: solid 1px #f8f5f2;
+  background: #c5c2c1;
+  box-shadow: inset 0px 0px 3px #636362;
+  padding: 3px 10px;
+}
+
+/* line 296, ../scss/klantenplatform.scss */
+#searchbox span, #searchbox input {
+  float: left;
+}
+
+/* line 301, ../scss/klantenplatform.scss */
+#navigatiebalk nav {
+  float: left;
+}
+
+/* !window lijsten */
+/* line 307, ../scss/klantenplatform.scss */
+.window_links li {
+  display: block;
+  padding: 10px;
+  border: solid 1px #b8b6b4;
+  border-radius: 4px;
+  border-top: solid 1px #636362;
+  border-bottom: solid 1px #f8f5f2;
+  background: #c5c2c1;
+  box-shadow: inset 0px 0px 3px #636362;
+}
+
+/* line 311, ../scss/klantenplatform.scss */
+.window_links li.active {
+  background: #cace80;
+}
+
+/* line 316, ../scss/klantenplatform.scss */
+.window_links li:last-child {
+  border-bottom: none;
+}
+/* line 319, ../scss/klantenplatform.scss */
+.window_links li:first-child {
+  border-top: none;
+}
+
+/* line 325, ../scss/klantenplatform.scss */
+.window_links .clickable li:hover {
+  background: #9fa617;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$lichtgroen', endColorstr='$groen');
+  background: -moz-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cace80), color-stop(50%, #9fa617));
+  background: -webkit-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -o-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -ms-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: linear-gradient(top, #cace80 0%, #9fa617 50%);
+  cursor: pointer;
+}
+
+/* line 332, ../scss/klantenplatform.scss */
+.showmore:link, .showmore:visited {
+  display: block;
+  text-align: center;
+  background: #9fa617;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px #636362;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* line 342, ../scss/klantenplatform.scss */
+.showmore:hover, .showmore:active {
+  background: #fff;
+  color: #9fa617;
+}
+
+/* line 348, ../scss/klantenplatform.scss */
+.window_rechts h4 {
+  border-bottom: solid 1px #b8b6b4;
+}
+/* line 351, ../scss/klantenplatform.scss */
+.window_rechts ul {
+  margin-left: 10px;
+}
+
+/* !window tabs */
+/* line 357, ../scss/klantenplatform.scss */
+#window.tabs {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 0px;
+  width: 780px;
+}
+
+/* line 366, ../scss/klantenplatform.scss */
+.ui-tabs-nav {
+  background: transparent;
+  border: none;
+}
+
+/* line 371, ../scss/klantenplatform.scss */
+.ui-tabs .ui-tabs-panel {
+  padding: 10px;
+  box-shadow: 0px 4px 8px 1px #636362;
+  background: #eceae9;
+}
+
+/* !accordions */
+/* line 380, ../scss/klantenplatform.scss */
+.accordion {
+  margin-top: 30px;
+}
+
+/* !tabellen */
+/* line 386, ../scss/klantenplatform.scss */
+thead {
+  background: #cace80;
+}
+
+/* line 391, ../scss/klantenplatform.scss */
+table {
+  border: 1px solid #cace80;
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* line 397, ../scss/klantenplatform.scss */
+tbody tr {
+  border-bottom: dotted 1px #fffcf9;
+}
+
+/*tr:nth-child(even) {
+	background: $lichtgroen;
+}
+*/
+/* line 405, ../scss/klantenplatform.scss */
+td, th {
+  /*width: 200px;*/
+  padding: 5px;
+}
+
+/* line 410, ../scss/klantenplatform.scss */
+th[title="sort"] {
+  cursor: pointer;
+}
+
+/* line 415, ../scss/klantenplatform.scss */
+.clickable tbody tr:hover {
+  cursor: pointer;
+  background: #9fa617;
+}
+
+/* line 420, ../scss/klantenplatform.scss */
+tbody tr.active {
+  background: #cace80;
+}
+
+/* line 424, ../scss/klantenplatform.scss */
+.aanwezigheden tbody td {
+  text-align: center;
+}
+
+/* !downloads */
+/* line 431, ../scss/klantenplatform.scss */
+.downloads li {
+  display: block;
+  padding: 10px;
+  border: solid 1px #b8b6b4;
+  border-radius: 4px;
+  border-top: solid 1px #636362;
+  border-bottom: solid 1px #f8f5f2;
+  background: #c5c2c1;
+  box-shadow: inset 0px 0px 3px #636362;
+}
+
+/* line 436, ../scss/klantenplatform.scss */
+.downloads li:hover {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$lichtgroen', endColorstr='$groen');
+  background: -moz-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cace80), color-stop(50%, #9fa617));
+  background: -webkit-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -o-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: -ms-linear-gradient(top, #cace80 0%, #9fa617 50%);
+  background: linear-gradient(top, #cace80 0%, #9fa617 50%);
+}
+
+/* line 440, ../scss/klantenplatform.scss */
+.downloads .file {
+  padding-left: 20px;
+  display: block;
+}
+
+/* line 445, ../scss/klantenplatform.scss */
+.word {
+  background: url(../img/file_icons/doc.png) no-repeat left center;
+}
+
+/* line 449, ../scss/klantenplatform.scss */
+.zip {
+  background: url(../img/file_icons/zip.png) no-repeat left center;
+}
+
+/* line 453, ../scss/klantenplatform.scss */
+.pdf {
+  background: url(../img/file_icons/pdf.png) no-repeat left center;
+}
+
+/* line 457, ../scss/klantenplatform.scss */
+.mp3 {
+  background: url(../img/file_icons/mp3.png) no-repeat left center;
+}
