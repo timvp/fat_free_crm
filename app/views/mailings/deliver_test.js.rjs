@@ -1,0 +1,3 @@
+#page[:flash].show
+#page[:flash].replace_html flash[:notice].to_json
+page.reload

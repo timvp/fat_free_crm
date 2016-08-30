@@ -10,7 +10,7 @@
 development: &development
   adapter: mysql2
   encoding: utf8
-  database: fatfreecrm_dev
+  database: fatfreecrm_dev2
   pool: 5
   username: fatfreecrm
   password: 01talen$

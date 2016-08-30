@@ -37,6 +37,7 @@ class Account < ActiveRecord::Base
   has_one :shipping_address, -> { where(address_type: "Shipping") }, dependent: :destroy, as: :addressable, class_name: "Address"
   has_many :addresses, dependent: :destroy, as: :addressable, class_name: "Address" # advanced search uses this
   has_many :emails, as: :mediator
+  has_many    :trainings
 
   serialize :subscribed_users, Set
 
@@ -75,6 +76,9 @@ class Account < ActiveRecord::Base
   validates :rating, inclusion: { in: 0..5 }, allow_blank: true
   validates :category, inclusion: { in: proc { Setting.unroll(:account_category).map { |s| s.last.to_s } } }, allow_blank: true
   validate :users_for_shared_access
+  
+  after_create :create_fusioninvoice_client 
+  after_update :update_fusioninvoice_client
 
   before_save :nullify_blank_category
 
@@ -124,6 +128,35 @@ class Account < ActiveRecord::Base
       end
     end
     account
+  end
+
+  def create_fusioninvoice_client 
+
+    billing = self.billing_address.nil? ? '' : self.billing_address.street1 
+    btw = self.cf_btw_nummer.nil? ? '' : self.cf_btw_nummer
+
+      
+    client = FusionInvoiceClient.new
+    client.create_client(self.id, self.name, billing , self.phone, '', self.email, btw, 'Bedrijf')
+
+  end
+  
+  def update_fusioninvoice_client
+    billing = self.billing_address.nil? ? '' : self.billing_address.street1 
+    btw = self.cf_btw_nummer.nil? ? '' : self.cf_btw_nummer
+    
+   client = FusionInvoiceClient.new
+   client.update_client(self.id, self.name, billing , self.phone, '', self.email, btw, 'Bedrijf')
+  
+#   	if self.website_user_changed? && !self.website_user.blank?
+#   		create_website_user
+#   	end
+#   	if !self.website_user.blank? && self.status_changed? && self.status == "inactive"
+#   	    WebsiteUser::inactivate self.website_user
+#   	end
+#   	if !self.website_user.blank? && self.status_changed? && self.status == "active"
+#   	    WebsiteUser::activate self.website_user
+#   	end
   end
 
   private

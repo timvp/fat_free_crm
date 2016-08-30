@@ -1,0 +1,18 @@
+%li.highlight[training]
+  %ul.tools
+    - if can?(:update, training)
+      %li= link_to_edit(training)
+
+    -# if shown_on_landing_page?
+      %li= link_to_discard(training)
+
+    -# if can?(:destroy, training)
+      %li= link_to_delete(training)
+  = link_to training.name , training_path(training)
+  = " " + t(:at) + " " + training.account.name if training.account
+  %tt
+    = " " + t(:starts) + " " + training.startdate.strftime('%d/%m/%Y') if training.startdate
+    = " " + t(:ends) + " " + training.enddate.strftime('%d/%m/%Y') if training.enddate
+  %strong
+    = " - " + t(:actie) + " " + training.cf_datum_volgende_actie.strftime('%d/%m/%Y') if training.cf_datum_volgende_actie
+

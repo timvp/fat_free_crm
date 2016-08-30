@@ -1,0 +1,18 @@
+if @training_date.valid?
+  page[:create_training_date_arrow].replace_html "&#9658;"
+  page[:create_training_date_title].replace_html t(:training_dates)
+  page.visual_effect :toggle_blind, :create_training_date, :duration => 0.3, :afterFinish => 'function(effect) {effect.element.update("")}'
+  page.insert_html :top, :training_dates, :partial => "training_date", :collection => [ @training_date ]
+  page[dom_id(@training_date)].visual_effect :highlight, :duration => 1.5
+  if called_from_index_page?
+    page << refresh_sidebar(:index)
+    page[:paginate].replace_html render(:partial => "shared/paginate")
+  else
+    page[:recently].replace :partial => "shared/recently"
+  end
+  page.call "crm.flick", :empty, :remove
+else
+  page[:create_training_date].replace_html :partial => "new"
+  page[:create_training_date].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:training_date_title].focus
+end

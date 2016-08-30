@@ -1,0 +1,77 @@
+= styles_for :contact, :mailing_destinee
+
+#confirm{ hidden }
+.title_tools#menu
+  = link_to_inline(:edit_mailing, edit_mailing_path(@mailing), :text => t(:edit)) + " | "
+  = link_to_inline(:create_mailing, duplicate_mailing_path(@mailing), :text => t(:duplicate)) + " | "
+  = link_to_function(t(:delete) + '?', confirm_delete(@mailing))
+.title#edit_mailing_title= h(@mailing.subject)
+
+%div#edit_mailing{ hidden }
+%div.remote#create_mailing{ hidden }
+%div#preview{ hidden }
+%div#mailing_status
+  = 'Status: ' + t(@mailing.status)
+- if (@mailing.status == 'in_wait' || @mailing_status == 'processing')
+  %div{:style => 'display:inline'}
+    = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: block;")
+    -#= periodically_call_remote(:update => "mailing_status",:url => {:controller => :mailings, :action => "update_status", :id=>@mailing.id}, :frequency => 5, :condition => "1 == 1" )
+    = periodically_call_remote(:update => "mailing_status",:url => "/mailings/update_status/#{@mailing.id}", :frequency => 5, :condition => "1 == 1" )
+    
+
+%div.clear
+
+
+-#%p
+-#  = @mailing.subject
+%p#mailing_inhoud
+  = @mailing.text
+ 
+-#= link_to_remote(:show_preview, :url => show_preview_mailing_path(@mailing), :method => :get, :with   => "'cancel='+Element.visible('preview')")
+
+= link_to :"Bekijk de HTML versie", show_preview_mailing_path(@mailing), :target => "_blank", :id => "html_versie"
+
+
+- if @mailing.status == 'draft'
+  #mailing_versturen
+    .subtitle Mailing versturen
+    = form_tag deliver_test_mailing_path, :id => "form_deliver_test_mailing", :method => :post, :remote => true do
+      = hidden_field_tag :id, @mailing.id
+      %span Stuur een testmail naar volgend mailadres:
+      = text_field_tag :to_address
+      = submit_tag t(:"verstuur testmail")
+    
+    -#%div#mailing_total_destinees
+      %span 
+        = 'Totaal aantal bestemmelingen voor deze mailing is  '
+        = @mailing.mailing_destinees.count.to_s
+
+  
+    = form_tag deliver_mailing_path, :id => "form_deliver_mailing_path", :method => :post, :remote => true do
+      = hidden_field_tag :id, @mailing.id
+      %span Verstuur de mailing naar onderstaande contacten: 
+      = submit_tag t(:"verstuur mailing")
+
+- if @mailing.status == 'xxx'
+  #mailing_contacten
+    = section_mailing(@mailing, :contacts)
+    .list#contacts
+      = render :partial => "contacts/contact", :collection => @mailing.contacts
+
+- if @mailing.status == 'sent' || @mailing.status == 'draft'
+  -#%div#sent_mails{:class => "subtitle"}
+    = t(:"Overzicht bestemmelingen")
+  #mailing_contacten
+    = section_mailing(@mailing, :contacts)
+    
+    .list#mailing_destinees
+      = render :partial => "mailings/mailing_destinee", :collection => @mailing.mailing_destinees
+
+
+-#= section(@mailing, :contacts)
+
+-#send_mail{ hidden }
+
+= load_select_popups_for(@mailing, :contacts)
+
+= hook(:show_mailing_bottom, self)

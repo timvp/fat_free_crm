@@ -1,0 +1,188 @@
+# US English translations for Ruby on Rails
+#
+# Use this as the base for the locale file of your language.
+
+"nl-BE":
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+
+    day_names: [Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag,Zondag]
+    abbr_day_names: [maa, din, woe, don, vri, zat, zon]
+
+    month_names: [~, januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]
+    abbr_month_names: [~, jan, feb, maa, apr, mei, jun, jul, aug, sep, okt, nov, dec]
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+    select:
+      prompt: "Selecteer"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u%n"
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Thousand
+          million: Million
+          billion: Billion
+          trillion: Trillion
+          quadrillion: Quadrillion
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "halve minuut"
+      less_than_x_seconds:
+        one:   "minder dan 1 seconde"
+        other: "minder dan %{count} seconden"
+      x_seconds:
+        one:   "1 seconde"
+        other: "%{count} seconden"
+      less_than_x_minutes:
+        one:   "minder dan een minuut"
+        other: "minder dan  %{count} minuten"
+      x_minutes:
+        one:   "1 minuut"
+        other: "%{count} minuten"
+      about_x_hours:
+        one:   "ong 1 uur"
+        other: "ong %{count} uren"
+      x_days:
+        one:   "1 dag"
+        other: "%{count} dagen"
+      about_x_months:
+        one:   "ong 1 maand"
+        other: "ong %{count} maanden"
+      x_months:
+        one:   "1 maand"
+        other: "%{count} maand"
+      about_x_years:
+        one:   "ong 1 jaar"
+        other: "ong %{count} jaren"
+      over_x_years:
+        one:   "meer dan 1 jaar"
+        other: "meer dan %{count} jaar"
+      almost_x_years:
+        one:   "bijna 1 jaar"
+        other: "bijna %{count} jaren"
+    prompts:
+      year:   "Jaar"
+      month:  "Maand"
+      day:    "Dag"
+      hour:   "Uur"
+      minute: "Minuten"
+      second: "Seconden"
+
+  helpers:
+    select:
+      prompt: "Selecteer"
+
+    submit:
+      create: 'Creëer %{model}'
+      update: 'Wijzig %{model}'
+      submit: 'Bewaar %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "is niet in de lijst"
+      exclusion: "is gereserveerd"
+      invalid: "is ongeldig"
+      confirmation: "doesn't match confirmation"
+      accepted: "must be accepted"
+      empty: "kan niet leeg zijn"
+      blank: "kan niet leeg zijn"
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      
+    template:
+        header:
+          one:    "1 fout gevonden. %{model} kon niet bewaard worden."
+          other:  "%{count} fouten gevonden. %{model} kon niet bewaard worden."
+        body: "Volgende problemen werden gevonden :"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited this %{model} from being saved"
+          other:  "%{count} errors prohibited this %{model} from being saved"
+        body: "There were problems with the following fields:"
+
+      messages:
+        taken: "has already been taken"
+        record_invalid: "Validation failed: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute}%{message}"

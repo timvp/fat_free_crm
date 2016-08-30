@@ -46,9 +46,12 @@ class Contact < ActiveRecord::Base
   has_many :contact_opportunities, dependent: :destroy
   has_many :opportunities, -> { order("opportunities.id DESC").distinct }, through: :contact_opportunities
   has_many :tasks, as: :asset, dependent: :destroy # , :order => 'created_at DESC'
-  has_one :business_address, -> { where(address_type: "Business") }, dependent: :destroy, as: :addressable, class_name: "Address"
+  has_one  :business_address, -> { where(address_type: "Business") }, dependent: :destroy, as: :addressable, class_name: "Address"
   has_many :addresses, dependent: :destroy, as: :addressable, class_name: "Address" # advanced search uses this
   has_many :emails, as: :mediator
+  has_many :trainings, :through => :registrations
+  has_many    :registrations
+  has_many    :documents, :as => :entity
 
   delegate :campaign, to: :lead, allow_nil: true
 
@@ -56,6 +59,8 @@ class Contact < ActiveRecord::Base
   ransack_can_autocomplete
 
   serialize :subscribed_users, Set
+  serialize :contact_type
+
 
   accepts_nested_attributes_for :business_address, allow_destroy: true, reject_if: proc { |attributes| Address.reject_address(attributes) }
 
@@ -80,6 +85,17 @@ class Contact < ActiveRecord::Base
     other = other.or(t[:phone].matches("%#{query}%")).or(t[:mobile].matches("%#{query}%"))
 
     where(name_query.nil? ? other : name_query.or(other))
+  }
+  
+  scope :state, lambda { |filters|
+    conditions = "1 = 2"
+    filters.each do |filter|
+    	conditions += " or contact_type like '%#{filter}%'"
+    end
+    where(conditions)
+    #where('(contact_type IN (?)' + (filters.delete('type_other') ? ' OR contact_type IS NULL)'  : ')'), filters)
+    #where('(status IN (?)' + (filters.delete('state_other') ? ' OR status IS NULL)'  : ')'), filters)
+    #where('contact_type IN (?)', filters)
   }
 
   uses_user_permissions

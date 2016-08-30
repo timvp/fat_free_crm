@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+
+    
+    <p>Volgende commentaar werd toegevoegd aan de training <%= @training.name %> :</p>  
+    
+    <p><%=h(@comment.comment).gsub(/\n/, '<br/>')%></p>
+
+    <p>
+      <a href="http://crm.talenhuis.be/trainings/<%= @training.id%>">Bekijk deze training in de CRM</a>
+    </p>
+
+    
+  </body>
+</html>

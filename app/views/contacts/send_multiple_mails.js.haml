@@ -1,0 +1,7 @@
+- if params[:cancel].true?
+  crm.hide_email_composition_window()
+- else
+  $("#send_mail").html('#{ j render(:partial => "send_mail") }');
+  crm.show_email_composition_window()
+  -#page[:send_mail].replace_html :partial => "send_mail"
+  -#page.call "crm.show_email_composition_window", :send_mail

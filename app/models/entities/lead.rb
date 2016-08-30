@@ -133,6 +133,8 @@ class Lead < ActiveRecord::Base
     account     = Account.create_or_select_for(self, account_params)
     opportunity = Opportunity.create_for(self, account, opportunity_params)
     contact     = Contact.create_for(self, account, opportunity, params)
+    contact.contact_type = params[:contact][:contact_type]
+    contact.save 
 
     [account, opportunity, contact]
   end

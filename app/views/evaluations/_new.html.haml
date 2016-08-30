@@ -1,0 +1,16 @@
+= simple_form_for(@evaluation, :html => one_submit_only(:evaluation), :remote => true) do |f|
+  = link_to_close new_evaluation_path
+  = f.hidden_field :user_id
+  = hidden_field_tag "evaluation[training_id]",  "#{@training.id  if @training}"
+  = f.error_messages :object_name => t('evaluation')
+
+  = render "evaluations/top_section", :f => f
+  -#= render "evaluations/extra",       :f => f
+  = render "fields/groups", :f => f
+  = render "evaluations/permissions", :f => f
+
+  .buttonbar
+    = f.submit t(:create_evaluation)
+    #{t :or}
+    = link_to_cancel new_evaluation_path
+

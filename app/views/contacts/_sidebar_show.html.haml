@@ -1,7 +1,12 @@
 .panel#summary
   %span{:style => "float:right"}= avatar_for(@contact, :size => "50x50")
   %h4= h(@contact.full_name)
+  
   = account_with_title_and_department(@contact)
+
+  - if !@contact.contact_type.blank?
+    %div= (@contact.contact_type.is_a?(Array) ? t(@contact.contact_type).join('/') : t(@contact.contact_type)  )
+  
 
   %div= render "shared/address_show", :asset => @contact, :type => 'business', :title => :address
 

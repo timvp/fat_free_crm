@@ -1,0 +1,20 @@
+.remoteA
+  = simple_form_for(@document,  :url => documents_path(:format => "js"), :html => { :multipart => true, :target => "uploading", :onsubmit => "$('document_submit').disabled = true" }) do |f|
+  
+    = link_to_close new_document_path
+
+    = hidden_field_tag "document[user_id]", @current_user.id
+    = hidden_field_tag "document[entity_id]", "#{@entity.id if @entity}"
+    = hidden_field_tag "document[entity_type]", "#{@entity.class if @entity}"
+
+    
+    
+  
+    = f.error_messages :object_name => t('document')
+  
+    = render "documents/top_section", :f => f
+  
+    .buttonbar
+      = f.submit t(:create_document), :id => :document_submit
+      #{t :or}
+      = link_to_cancel new_document_path

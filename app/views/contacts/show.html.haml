@@ -14,9 +14,17 @@
   = hook(:show_contact_bottom, self, {entity: @contact}) do
 
     = render :partial => "tasks/tasks", :locals => {:object => @contact}
+    
+    = section(@contact, :documents)
+    .list#documents
+      - @documents = @contact.documents.paginate(:page => 1, :per_page => 20)
+      = render :partial => "documents/document", :collection => @contact.documents.paginate(:page => 1, :per_page => 20)
+
 
     = render :partial => "opportunities/opportunities", :locals => {:object => @contact}
     
     = render :partial => "versions/versions", :locals => {:object => @contact}
 
     = load_select_popups_for(@contact, :tasks, :opportunities)
+    
+  %iframe#uploading{ :name => "uploading", :style => "width:100px; height:10px; border:5px" }

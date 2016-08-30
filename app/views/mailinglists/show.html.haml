@@ -1,0 +1,24 @@
+= styles_for :contact
+
+#confirm{ hidden }
+.title_tools#menu
+  = link_to_inline(:edit_mailinglist, edit_mailinglist_path(@mailinglist), :text => t(:edit)) + " | "
+  = link_to_function(t(:delete) + '?', confirm_delete(@mailinglist))
+.title#edit_mailinglist_title= h(@mailinglist.name)
+
+%div#edit_mailinglist{ hidden }
+
+%p
+  = @mailinglist.description
+  
+= section(@mailinglist, :contacts)
+
+.list#contacts
+  = render :partial => "contacts/contact", :collection => @mailinglist.contacts
+#send_mail{ hidden }
+
+= load_select_popups_for(@mailinglist, :contacts)
+
+= hook(:show_mailinglist_bottom, self)
+
+

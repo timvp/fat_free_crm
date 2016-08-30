@@ -1,0 +1,8 @@
+= form_tag add_list_mailing_path(@mailing), :method => :post, :remote => true do
+  -#= select_tag 'mailinglist_id',  options_from_collection_for_select(@mailinglists, "id", "name"), {:include_blank => t(:select_blank), :multiple => false, :size =>1, :id => "mailing_lists" }
+  = select_tag 'mailinglist_id',  options_from_collection_for_select(@mailinglists, "id", "name"), {:include_blank => false, :multiple => false, :size =>1, :id => "mailing_lists" }
+  = submit_tag :"Voeg groep toe"
+= form_tag add_list_mailing_path(@mailing), :method => :post, :remote => true do
+  = select_tag 'list_url',  options_from_collection_for_select(@lists, "url", "name"), {:include_blank => false, :multiple => false, :size =>1, :url => "lists" }
+  = submit_tag :"Voeg lijst toe"
+  

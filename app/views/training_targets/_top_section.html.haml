@@ -1,0 +1,14 @@
+= hook(:training_target_top_section, self, :f => f) do
+  .section
+    %table
+      %tr
+        %td(colspan="3")
+          .label.top.req #{t :title}:
+          = f.text_field :title, :style =>"width:600px"
+      %tr
+        %td(colspan="3")
+          .label.top.req #{t :description}:
+          = f.text_area :description, :style =>"width:600px", :rows => 10
+          :javascript
+             CKEDITOR.replace( 'training_target_description',{toolbar : 'Basic'} );
+          

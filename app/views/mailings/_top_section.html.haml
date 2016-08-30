@@ -1,0 +1,23 @@
+.section 
+  %table{:style => "width:800px"}
+    %tr
+      %td
+        .label.top #{t :titel}:
+        = f.text_field :subject
+      %td= spacer
+    %tr
+      %td
+        .label.top #{t :tekst}:
+        = f.text_area :text, :rows => 10
+    %tr
+      %td(colspan="3")
+        .label.top #{t :html}:
+        = f.text_area :html, :rows => 15, :id => "ckeditor"
+        
+:javascript
+  CKEDITOR.replace( 'ckeditor',{
+        toolbar : 'Basic'
+    } );
+
+
+= hook(:mailing_top_section_after, self, :f => f)

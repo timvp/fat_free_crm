@@ -7,6 +7,7 @@ module FatFreeCRM
   class Tabs
     cattr_accessor :main
     cattr_accessor :admin
+    cattr_accessor :trainer
 
     # Class methods.
     #----------------------------------------------------------------------------
@@ -18,6 +19,10 @@ module FatFreeCRM
       def admin
         @@admin ||= (Setting[:admin_tabs] && Setting[:admin_tabs].dup)
       end
+      def trainer
+        @@trainer ||= (Setting[:tabs_trainer] && Setting[:tabs_trainer].dup)
+      end
+
     end
   end
 end

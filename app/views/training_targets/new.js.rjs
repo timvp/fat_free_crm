@@ -1,0 +1,16 @@
+page.call "crm.flick", :empty, :toggle
+#page.call "crm.hide_form", :options if called_from_index_page?
+page.call "crm.flip_form", :create_training_target
+
+page << "for (var i in CKEDITOR.instances) {                       
+            (function(i){             
+                CKEDITOR.instances[i].destroy();                    
+            })(i);                                                  
+           };"   
+
+unless params[:cancel].true?
+  page[:create_training_target].replace_html :partial => "new"
+  page.call "crm.set_title", :create_training_target, t(:create_training_target)
+else
+  page.call "crm.set_title", :create_training_target, t(:training_targets)
+end

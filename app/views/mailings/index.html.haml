@@ -1,0 +1,20 @@
+= styles_for :mailing
+
+.title_tools
+  = link_to_inline(:create_mailing, new_mailing_path, :text=> t(:create_mailing)) << " | "
+  = link_to_inline(:options, options_mailings_path, :text=> t(:options))
+
+.title
+  %span#create_mailing_title #{t :mailings}
+  = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: none;")
+.remote#options{ hidden }
+.remote#create_mailing{ hidden }
+
+.list#mailings
+  - if @mailings.any?
+    = render @mailings
+  - else
+    = render "shared/empty"
+
+#paginate= render "shared/paginate"
+-#export= render "shared/export"

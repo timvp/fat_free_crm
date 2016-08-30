@@ -1,0 +1,4 @@
+- id = dom_id(@training_date)
+
+$('##{id}').replaceWith('#{ j render(:partial => 'training_date', :collection => [ @training_date ]) }');
+$('##{id}').effect("highlight", { duration:1500 });

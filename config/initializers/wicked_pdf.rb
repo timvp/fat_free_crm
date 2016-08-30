@@ -1,0 +1,1 @@
+WickedPdf.config = { :exe_path => '/home/effict/.rvm/gems/ruby-2.1.5/bin/wkhtmltopdf' }

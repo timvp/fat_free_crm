@@ -6,6 +6,10 @@
     .strip.suspended #{t :user_suspended}
   - elsif user.admin?
     .strip.admin #{t :user_admin}
+  - elsif user.is_trainer?
+    .strip.trainer #{t :trainer}
+  - elsif user.is_customer?
+    .strip.customer #{t :customer}
   - else
     .strip.active #{t :user_active}
 

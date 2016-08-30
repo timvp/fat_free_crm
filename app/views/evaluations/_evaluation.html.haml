@@ -1,0 +1,19 @@
+%li.highlight[evaluation]
+  - if evaluation.cf_type
+    .strip{:class => evaluation.cf_type}= t(evaluation.cf_type)
+  - else
+    .strip.white #{t :other}
+  %ul.tools
+    - if can?(:update, evaluation)
+      %li= link_to_edit(evaluation)
+
+    -# if shown_on_landing_page?
+      %li= link_to_discard(evaluation)
+
+    -# if can?(:destroy, evaluation)
+      %li= link_to_delete(evaluation)
+  = link_to evaluation.name, evaluation_path(evaluation)
+  = t( :training) + " :  " 
+  = link_to(evaluation.training.name, evaluation.training)
+  %dt
+    -#= evaluation.startdate

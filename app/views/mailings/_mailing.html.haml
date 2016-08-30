@@ -1,0 +1,26 @@
+%li.highlight[mailing]
+
+  - if !mailing.status.blank?
+    .strip{:class => mailing.status}= t mailing.status
+  - else
+    .strip{:style => "color: gray;"}= t :other
+    
+  %ul.tools
+    - if can?(:update, mailing) && mailing.status != 'sent'
+      %li= link_to_edit(mailing)
+
+    -# if shown_on_landing_page?
+      %li= link_to_discard(mailing)
+
+    - if can?(:destroy, mailing)
+      %li= link_to_delete(mailing)
+      
+
+
+  = link_to mailing.subject , mailing_path(mailing)
+  %tt
+    = "Gecreëerd op " + mailing.created_at.strftime("%e %b %G")
+    = " - Verzonden op " + mailing.date_sent.strftime("%e %b %G") if mailing.date_sent
+    
+    
+   

@@ -55,6 +55,12 @@ class User < ActiveRecord::Base
   has_many :preferences, dependent: :destroy
   has_many :lists
   has_and_belongs_to_many :groups
+  
+  belongs_to  :customer, :class_name => "Account", :foreign_key => :customer_id
+  belongs_to  :customer_employee, :class_name => "Contact", :foreign_key => :contact_id
+
+
+
 
   has_paper_trail class_name: 'Version', ignore: [:perishable_token]
 

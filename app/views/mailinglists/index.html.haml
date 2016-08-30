@@ -1,0 +1,23 @@
+= styles_for :mailinglist
+
+.title_tools
+  = link_to_inline(:create_mailinglist, new_mailinglist_path, :text=> t(:create_mailinglist)) << " | "
+  = link_to_inline(:options, options_mailinglists_path, :text=> t(:options))
+
+.title
+  %span#create_mailinglist_title #{t :mailinglists}
+  = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: none;")
+.remote#options{ hidden }
+.remote#create_mailinglist{ hidden }
+.remote#advanced_search{ hidden_if(!params[:q]) }
+  - if params[:q]
+    = render :partial => "advanced_search"
+
+.list#mailinglists
+  - if @mailinglists.any?
+    = render @mailinglists
+  - else
+    = render "shared/empty"
+
+-#paginate= render "common/paginate"
+-#export= render "common/export"

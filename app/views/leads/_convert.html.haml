@@ -17,6 +17,11 @@
             %td
               .label.req #{t :assigned_to}:
               = user_select(:account, all_users, current_user)
+    %table
+      %tr
+        %td  
+          .label.req #{t :type}:
+          = select_tag 'contact[contact_type][]', options_for_select(Setting.unroll(:contact_type)), { :multiple => true, :size =>4, :id => "contact_type" }
     = render "leads/opportunity"
     = render "leads/convert_permissions"
     .buttonbar

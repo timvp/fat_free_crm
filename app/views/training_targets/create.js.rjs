@@ -1,0 +1,18 @@
+if @training_target.valid?
+  page[:create_training_target_arrow].replace_html "&#9658;"
+  page[:create_training_target_title].replace_html t(:training_targets)
+  page.visual_effect :toggle_blind, :create_training_target, :duration => 0.3, :afterFinish => 'function(effect) {effect.element.update("")}'
+  page.insert_html :top, :training_targets, :partial => "training_target", :collection => [ @training_target ]
+  page[dom_id(@training_target)].visual_effect :highlight, :duration => 1.5
+  if called_from_index_page?
+    page << refresh_sidebar(:index)
+    page[:paginate].replace_html render(:partial => "shared/paginate")
+  else
+    page[:recently].replace :partial => "shared/recently"
+  end
+  page.call "crm.flick", :empty, :remove
+else
+  page[:create_training_target].replace_html :partial => "new"
+  page[:create_training_target].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:training_target_title].focus
+end

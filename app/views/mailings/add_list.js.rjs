@@ -1,0 +1,1 @@
+page[:mailing_destinees].replace_html :partial => "mailings/mailing_destinee", :collection => @mailing_destinees

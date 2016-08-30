@@ -1,0 +1,6 @@
+if @evaluations.any?
+  page[:evaluations].replace_html render(:partial => "evaluation", :collection => @evaluations)
+else
+  page[:evaluations].replace_html render(:partial => "shared/empty")
+end
+page[:paginate].replace_html render(:partial => "shared/paginate")

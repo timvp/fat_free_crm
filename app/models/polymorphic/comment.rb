@@ -44,8 +44,12 @@ class Comment < ActiveRecord::Base
 
   # Add user to subscribed_users field on entity
   def subscribe_user_to_entity(u = user)
-    commentable.subscribed_users << u.id
-    commentable.save
+    if (u.is_trainer? or u.is_customer? or u.is_customer_responsible?)
+      #do nothing
+    else
+      commentable.subscribed_users << u.id
+      commentable.save
+    end
   end
 
   # Notify subscribed users when a comment is added, unless user created this comment
@@ -64,7 +68,11 @@ class Comment < ActiveRecord::Base
     # e.g. "Hi @example_user, take a look at this lead. Please show @another_user"
     comment.scan(/@([a-zA-Z0-9_-]+)/).map(&:first).each do |username|
       if (mentioned_user = User.find_by_username(username))
-        subscribe_user_to_entity(mentioned_user)
+        if (mentioned_user.is_trainer? or mentioned_user.is_customer? or mentioned_user.is_customer_responsible?) 
+          #do nothing
+        else
+          subscribe_user_to_entity(mentioned_user)
+        end
       end
     end
   end

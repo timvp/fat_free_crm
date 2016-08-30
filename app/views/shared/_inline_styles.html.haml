@@ -26,6 +26,19 @@
     li.user .suspended { background: gainsboro; }
     li.user .active    { background: lightgreen; }
     li.user .signed_up { background: lightsalmon; }
+    
+    
+  - if models.include?(:training_date)
+    - Setting.training_date_status_color.each do |key, value|
+      li.training_date .#{key} { background:#{value}; }
+
+  - if models.include?(:mailing_destinee)
+    - Setting.mailing_destinee_status_color.each do |key, value|
+      li.mailing_destinee .#{key} { background:#{value}; }
+
+  - if models.include?(:mailing)
+    - Setting.mailing_status_color.each do |key, value|
+      li.mailing .#{key} { background:#{value}; }
 
   = hook(:inline_styles, self, local_assigns)
 

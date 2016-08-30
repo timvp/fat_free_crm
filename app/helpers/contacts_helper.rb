@@ -18,4 +18,20 @@ module ContactsHelper
     summary << "#{t(:mobile_small)}: #{contact.mobile}" if contact.mobile.present?
     summary.join(', ')
   end
+  
+   def contact_type_state_checbox(type_state, count)
+    entity_filter_checkbox(:state, type_state, count)
+  end
+  
+    def ccontact_type_state_checbox(type_state, count)
+    checked = (session[:filter_by_contact_type_state] ? session[:filter_by_contact_type_state].split(",").include?(type_state.to_s) : count.to_i > 0)
+    onclick = remote_function(
+      :url      => { :action => :filter },
+      :with     => h(%Q/"type_state=" + $$("input[name='type_state[]']").findAll(function (el) { return el.checked }).pluck("value")/),
+      :loading  => "$('loading').show()",
+      :complete => "$('loading').hide()"
+    )
+    check_box_tag("type_state[]", type_state, checked, :id => type_state, :onclick => onclick)
+  end
+
 end

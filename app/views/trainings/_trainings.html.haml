@@ -1,0 +1,6 @@
+= section(object, :trainings)
+.list#trainings
+  - trainings = object.trainings.paginate(:page => 1, :per_page => 20)
+  = render :partial => "trainings/training", :collection => training
+
+= will_paginate trainings, :id => 'trainings_pagination', :params => {:action => :trainings}

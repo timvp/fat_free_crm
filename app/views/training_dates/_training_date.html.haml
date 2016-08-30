@@ -1,0 +1,26 @@
+%li.highlight[training_date]
+
+  - if training_date.status
+    .strip{:class => training_date.status}= t training_date.status
+  - else
+    .strip{:style => "color: gray;"}= t :other
+
+  %ul.tools
+    - if can?(:update, training_date)
+      - if training_date.status != "cancelled"
+        %li= link_to_cancel_training_date(training_date)
+      - if training_date.status != "confirmed"
+        %li= link_to_confirm_training_date(training_date)
+      %li= link_to_edit(training_date)
+      %li= link_to_delete(training_date)
+
+  .training_date
+    %strong
+      = l(training_date.startdate, :format => :mmddyyyy)
+    = t(:om) if training_date.starttime?
+    = l(training_date.starttime, :format => :hhmm) if training_date.starttime?
+    = " " + t(:duration) + " " + l(training_date.duration, :format => :hhmm) if training_date.duration?	
+    %tt
+      = "| " + training_date.remark if training_date.remark?
+ 
+    -#= training_date.description

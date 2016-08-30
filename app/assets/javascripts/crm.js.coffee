@@ -374,6 +374,7 @@
 
     #----------------------------------------------------------------------------
     auto_complete: (controller, related, focus) ->
+      alert('test ' + related)
       $("#auto_complete_query").autocomplete(
         source: (request, response) =>
           request = {auto_complete_query: request['term'], related: related}
@@ -420,7 +421,36 @@
         when "contacts" then "fa-user"
         when "opportunities" then "fa-money"
         when "team" then "fa-globe"
-
+        
+      
+    show_preview_window: ->
+      $("#preview").dialog({
+        width: 800, 
+        title: "Mail versturen"}).open()
+        
+    hide_preview_window: ->
+      $("#preview").dialog().close()
+      
+    show_email_composition_window: ->
+      $("#send_mail").dialog({
+        width: 600, 
+        title: "Mail versturen"}).open()
+        
+    hide_email_composition_window: ->
+      $("#send_mail").dialog().close()
+    
+    select_deselect_contacts: ->
+      checkboxes = $('#form_contacts').find(':checkbox')
+      ncount = 0
+      $.each checkboxes, (idx, e) ->
+        if !e.checked
+          ncount++
+        return
+      valueChecked = if ncount > 0 then 1 else 0
+      $.each checkboxes, (idx, e) ->
+        e.checked = valueChecked
+        return
+      return
 
   $ ->
     crm.focus_on_first_field()

@@ -1,0 +1,6 @@
+= section(object, :evaluations)
+.list#evaluations
+  - evaluations = object.evaluations.paginate(:page => 1, :per_page => 20)
+  = render :partial => "evaluations/evaluation", :collection => evaluation
+
+= will_paginate evaluations, :id => 'evaluations_pagination', :params => {:action => :evaluations}

@@ -1,0 +1,13 @@
+= form_for(@mailing, :html => one_submit_only(:mailing), :remote => true) do |f|
+  = link_to_close new_mailing_path
+
+  = f.error_messages :object_name => t('mailing')
+
+  = render "mailings/top_section",   :f => f
+  -#= render "mailings/extra",       :f => f
+  -#= render "mailings/web",         :f => f
+  -#= render "mailings/permissions", :f => f
+  .buttonbar
+    = f.submit t(:"mailing opslaan")
+    #{t :or}
+    = link_to_cancel new_mailing_path

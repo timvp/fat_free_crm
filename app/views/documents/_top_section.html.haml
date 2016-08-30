@@ -1,0 +1,15 @@
+= hook(:document_top_section, self, :f => f) do
+  .section
+    %table
+      %tr
+        %td
+          .label.top.req #{t :name}:
+          = f.text_field :name
+        %td= spacer
+        %td
+          .label.top.req #{t :description}:
+          = f.text_field :description
+      %tr
+        %td
+          .label.top.req #{t :file}:
+          = f.file_field :document

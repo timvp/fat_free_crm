@@ -1,0 +1,16 @@
+%li.highlight[mailing_destinee]
+  - if !mailing_destinee.status.blank?
+    .strip{:class => mailing_destinee.status}= t mailing_destinee.status
+  - else
+    .strip{:style => "color: gray;"}= 'Wacht'
+      
+  %ul.tools
+
+    - if shown_on_landing_page?
+      %li= link_to_discard(mailing_destinee)
+    
+  .mailing_destinee
+    = link_to(mailing_destinee.contact.full_name, contact_path(mailing_destinee.contact))  
+    = mailing_destinee.contact.email
+    - if mailing_destinee.sent_at
+      =  " | " + l(mailing_destinee.sent_at, :format => :mmddyyyy_hhmm)

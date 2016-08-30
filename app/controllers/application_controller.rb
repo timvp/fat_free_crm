@@ -126,6 +126,13 @@ class ApplicationController < ActionController::Base
 
   #----------------------------------------------------------------------------
   def require_user
+	if current_user && (current_user.is_customer? || current_user.is_customer_responsible? || current_user.is_trainer?)
+      #flash[:notice] = t(:msg_login_needed) if request.fullpath != "/"
+      respond_to do |format|
+        format.html { redirect_to '/portal'}
+        format.js   { render(:index) { |page| page.redirect_to '/portal' } }
+      end
+    end
     unless current_user
       store_location
       flash[:notice] = t(:msg_login_needed) if request.fullpath != "/"

@@ -1,0 +1,3 @@
+id = dom_id(@training_date)
+page[id].replace :partial => "training_date", :collection => [ @training_date ]
+page[id].visual_effect :highlight, :duration => 1.0

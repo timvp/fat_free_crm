@@ -33,6 +33,15 @@ module ApplicationHelper
     content_tag(:p, nil, id: "flash", style: "display:none;")
   end
 
+  def show_flash_portal(options = { :sticky => false })
+    [:error, :warning, :info, :notice].each do |type|
+      if flash[type]
+        html = content_tag(:p, h(flash[type]), :id => "flash")
+        return html #<< content_tag(:script, "portal_flash('#{type}', #{options[:sticky]})", :type => "text/javascript")
+      end
+    end
+    content_tag(:p, nil, :id => "flash", :style => "display:none;")
+  end
   #----------------------------------------------------------------------------
   def subtitle(id, hidden = true, text = id.to_s.split("_").last.capitalize)
     content_tag("div",
@@ -44,12 +53,11 @@ module ApplicationHelper
   end
 
   #----------------------------------------------------------------------------
-  def section(related, assets)
+  def section_original(related, assets)
     asset = assets.to_s.singularize
     create_id  = "create_#{asset}"
     select_id  = "select_#{asset}"
     create_url = controller.send(:"new_#{asset}_path")
-
     html = tag(:br)
     html << content_tag(:div, link_to(t(select_id), "#", id: select_id), class: "subtitle_tools")
     html << content_tag(:div, "&nbsp;|&nbsp;".html_safe, class: "subtitle_tools")
@@ -57,9 +65,30 @@ module ApplicationHelper
     html << content_tag(:div, t(assets), class: :subtitle, id: "create_#{asset}_title")
     html << content_tag(:div, "", class: :remote, id: create_id, style: "display:none;")
   end
+  
+  def section(related, assets)
+    asset = assets.to_s.singularize
+    create_id  = "create_#{asset}"
+    select_id  = "select_#{asset}"
+    create_url = controller.send(:"new_#{asset}_path")
+        logger.info(select_id)
+    html = tag(:br)
+    
+    if can? :create, asset.classify.constantize
+      if asset != 'training_target' && asset != 'training_date' && asset != 'evaluation' && asset != 'document'
+        html << content_tag(:div, link_to(t(select_id), "#", :id => select_id), :class => "subtitle_tools")
+        html << content_tag(:div, "&nbsp;|&nbsp;".html_safe, :class => "subtitle_tools")
+      end
+      html << content_tag(:div, link_to_inline(create_id, create_url, related: dom_id(related), text: t(create_id)), class: "subtitle_tools")
+    end
+    html << content_tag(:div, t(assets), :class => :subtitle, :id => "create_#{asset}_title")
+    html << content_tag(:div, "", :class => :remote, :id => create_id, :style => "display:none;")
+  end
 
   #----------------------------------------------------------------------------
   def load_select_popups_for(related, *assets)
+	logger.info('select popups !!!!!')
+	logger.info(related)
     js = generate_js_for_popups(related, *assets)
     content_for(:javascript_epilogue) do
       raw "$(function() { #{js} });"
@@ -523,4 +552,18 @@ module ApplicationHelper
     options = { renderer: RemoteLinkPaginationHelper::LinkRenderer }.merge(options)
     will_paginate(collection, options)
   end
+  
+  
+  
+   def ensure_navigation
+        @navigation ||= [ { :title => 'Home', :url => '/' } ]
+    end
+
+    def navigation_add(title, url)
+        ensure_navigation << { :title => title, :url => url }
+    end
+
+    def render_navigation
+        render :partial => 'portal/navigation', :locals => { :nav => ensure_navigation }
+    end
 end

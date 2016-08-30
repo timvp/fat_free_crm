@@ -1,0 +1,24 @@
+= hook(:training_date_top_section, self, :f => f) do
+  .section
+    %table
+      %tr
+        %td
+          .label.top #{t :status}:
+          = f.select :status, training_date_status_codes_for(@training_date), { :selected => (@training_date.status || "open").to_sym }, { :style => "width:160px" }
+      %tr
+        %td
+          .label.top.req #{t :startdate}:
+          = f.text_field :startdate, :value => f.object.startdate ? l(f.object.startdate, :format => :mmddyyyy) : "", :style => "width:110px", :autocomplete => :off
+        %td= spacer
+        %td
+          .label.top.req #{t :starttime}:
+          = f.text_field :starttime, :value => f.object.starttime ? l(f.object.starttime, :format => :hhmm) : "", :style => "width:110px", :autocomplete => :off
+      %tr
+        %td
+          .label.top #{t :duration}
+          = f.text_field :duration, :value => f.object.duration ? l(f.object.duration, :format => :hhmm) : "", :style => "width:110px", :autocomplete => :off
+      %tr
+        %td
+          .label.top #{t :remark}
+          = f.text_area :remark, :style =>"width:500px", :rows => 3
+

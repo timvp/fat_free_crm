@@ -18,12 +18,28 @@
         .label #{t :password_confirmation}:
         = f.password_field :password_confirmation
     %tr
-      %td(colspan=3)
+      %td(colspan=1)
         .check_box(style="margin-top:6px")
           -# Sorry, you can't revoke Admin rights from yourself.
-          = f.check_box(:admin, { :disabled => edit && @user == current_user })
-          %label{:for => 'user_admin'}
-            = t(:user_is_admin)
+          = f.check_box(:admin, { :disabled => edit && @user == @current_user }) << " " << t(:user_is_admin)
+      %td= spacer
+      %td
+        .check_box(style="margin-top:6px")
+          = f.check_box(:is_trainer, { :disabled => edit && @user == @current_user }) << " " << t(:user_is_trainer)
+    %tr
+      %td(colspan=1)
+        .check_box(style="margin-top:6px")
+          = f.check_box(:is_customer, { :disabled => edit && @user == @current_user }) << " " << t(:user_is_customer)
+      %td= spacer
+      %td
+        .check_box(style="margin-top:6px")
+          = f.check_box(:is_customer_responsible, { :disabled => edit && @user == @current_user }) << " " << t(:user_is_customer_responsible)
+    %tr
+      %td
+        = f.collection_select(:customer_id, @customers, :id, :name, {:include_blank => true, :prompt => "Selecteer..."})
+    %tr
+      %td
+        = f.collection_select(:employee_id, @contacts, :id, :full_name, {:include_blank => true, :prompt => "Selecteer..."})
 
 .subtitle #{t :personal_information}
 .section

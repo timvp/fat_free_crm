@@ -8,11 +8,17 @@
 
 .remote#options{ hidden }
 
-.list#contacts
-  - if @contacts.any?
-    = render @contacts
-  - else
-    = render "shared/empty"
+#send_mail{ hidden }
+
+= form_tag send_multiple_mails_contacts_path, :id => "form_contacts", :method => :post, :remote => true do
+  = submit_tag t(:send_mail)
+  = link_to_function t(:select_deselect_all), "crm.select_deselect_contacts();"
+
+  .list#contacts
+    - if @contacts.any?
+      = render @contacts
+    - else
+      = render "shared/empty"
 
 #paginate= render "shared/paginate_with_per_page"
 #export= render "shared/export"

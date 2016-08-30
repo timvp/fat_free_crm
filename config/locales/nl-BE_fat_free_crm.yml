@@ -1,0 +1,1033 @@
+nl-BE:
+  language: Nederlands
+
+  # Generic terms.
+  #----------------------------------------------------------------------------
+  all: Alle
+  at: bij
+  here: hier
+  no_button: 'Nee'
+  not_implemented: Nog niet geïmplementeerd.
+  or: of
+  select_none: '-- Geen --'
+  select_blank: '-- Selecteer --'
+  yes_button: 'Ja'
+  type: Type
+  yes: Ja
+  no: Nee
+  no_access: U heeft niet de nodige rechten voor deze actie
+
+  # Settings.
+  #----------------------------------------------------------------------------
+  tab_dashboard: Dashboard
+  tab_tasks: Taken
+  tab_campaigns: Campagnes
+  tab_leads: Leads
+  tab_accounts: Bedrijven
+  tab_contacts: Contacten
+  tab_opportunities: Opportuniteiten
+  tab_mailinglists: Groepen
+  tab_mailings: Mailings
+
+  admin_tab_users: Gebruikers
+  admin_tab_settings: Instellingen
+  admin_tab_plugins: Plugins
+
+  affiliate: Affiliate
+  competitor: Concurrent
+  customer: Klant
+  partner: Partner
+  reseller: Reseller
+  vendor: Verkoper
+  school: School
+  referrer: Doorverwijzer
+  secondline: Tweedelijns
+  finance: Financiering
+
+  planned: Gepland
+  started: Begonnen
+  on_hold: In wacht
+  completed: Afgewerkt
+  called_off: Geannuleerd
+
+  new: Nieuw
+  contacted: Gecontacteerd
+  converted: Converted
+  rejected: Afgewezen
+
+  cold_call: Cold Call
+  conference: Vergadering
+  online: Online Marketing
+  referral: Verwijzing
+  self: Eigen initiatief
+  web: Website
+  word_of_mouth: Mond tot mond 
+  other: Ander
+
+  prospecting: Prospecting
+  analysis: Analyse
+  presentation: Presentatie
+  proposal: Voorstel
+  negotiation: Onderhandeling
+  final_review: Final Review
+  won: Afgesloten/gewonnen
+  lost: Afgesloten/verloren
+
+  call: Oproep
+  email: Email
+  follow_up: Opvolging
+  lunch: Lunch
+  meeting: Vergadering
+  money: Geld
+  presentation: Presentatie
+  trip: Bezoek
+
+  overdue: Overdatum
+  due_asap: Zo vlug als mogelijk
+  due_today: Vandaag
+  due_tomorrow: Morgen
+  due_this_week: Deze week
+  due_next_week: Volgende week
+  due_later: Later
+  due_specific_date: Op specifieke datum...
+
+  completed_today: Vandaag
+  completed_yesterday: Gisteren
+  completed_last_week: Vorige week
+  completed_this_month: Deze maand
+  completed_last_month: Vorige maand
+  
+  active: Actief
+  inactive: Niet actief
+  temp_inactive : Tijdelijk inactief
+  candidate : Kandidaat
+  staging : Stagiair
+  refused : Niet weerhouden
+  
+  therapist: Therapeut 
+  coworker: Medewerker
+  receptionist : Onthaalmedewerker
+  administrator : Administratief medewerker
+  sympathizer: Sympathisant
+  interested: Mailing
+  business: Zakelijk
+  
+  
+  en: Engels
+  nl: Nederlands
+  fr: Frans
+  ge: Duits
+  it: Italiaans
+  sp: Spaans
+  oth: Andere
+  
+  lower: Lager onderwijs
+  secondary: Middelbaar onderwijs
+  bachelor: Bachelor
+  master: Master
+  
+  # Mailinglist / Groups
+  #----------------------------------------------------------------------------
+  mailinglist: Groep
+  mailinglists: Groepen
+  total_contacts : Totaal contacten
+  create_mailinglist : Creëer groep
+  description: Beschrijving
+  select_mailinglist: Selecteer groep
+  contact_summary: Samenvatting
+  
+  mailing: Mailing
+  mailings: Mailings
+  mailing_small: mailing
+  mailings_small: mailings
+
+  # Models/
+  #----------------------------------------------------------------------------
+  one_hour: Een uur
+  one_day: Een dag
+  two_days: Twee dagen
+  one_week: Een week
+  two_weeks: Twee weken
+  one_month: Een maand
+
+  # Model Validations.
+  #----------------------------------------------------------------------------
+  activerecord:
+    errors:
+      models:
+        authentication:
+          attributes:
+            login_field:
+              is_not_valid: is niet geldig
+            password_field:
+              is_not_valid: is niet geldig
+        account:
+          attributes:
+            name:
+              missing_account_name: "^Alsjeblief verduidelijk uw accountnaam."
+            access:
+              share_account: "^Verduidelijk met wie je je account wil delen."
+        campaign:
+          attributes:
+            name:
+              missing_campaign_name: "^Geef de naam van de campagne aub."
+            ends_on:
+              dates_not_in_sequence: "^Vergewis je ervan dat de einddatum van de campagne later is dan de begindatum."
+            access:
+              share_campaign: "^Specifieer de deelnemers aan de campagne aub."
+        contact:
+          attributes:
+            first_name:
+              missing_first_name: "^Geef de voornaam aub."
+            last_name:
+              missing_last_name: "^Geef de familienaam aub."
+              name_already_exists: "^Naam bestaat al."
+            contact_type:
+              missing_contact_type: "^Geef type aub."
+            status:
+              missing_status: "^Vul status in aub."
+            access:
+              share_contact: "^Geef in met wie je de contacten wil delen."
+            
+        lead:
+          attributes:
+            first_name:
+              missing_first_name: "^Geef voornaam aub."
+            last_name:
+              missing_last_name: "^Geef familienaam aub."
+            access:
+              share_lead: "^Please specify users to share the lead with."
+        opportunity:
+          attributes:
+            name:
+              missing_opportunity_name: "^Geef de naam van de opportuniteit aub."
+            access:
+              share_opportunity: "^Geef de gebruikers in met wie je de opportuniteit wil delen."
+        task:
+          attributes:
+            name:
+              missing_task_name: "^Specifieer de taak aub."
+            calendar:
+              invalid_date: "^Geef geldigheidsdatum aub."
+        user:
+          attributes:
+            username:
+              missing_username: "^Geef gebruikersnaam aub."
+              username_taken: "^Deze gebruikersnaam is al in gebruik."
+            email:
+              missing_email: "^Geef emailadres aub."
+              email_in_use: "^Er is een andere gebruiker met hetzelfde emailadres."
+
+  msg_account_suspended: Gebruikersaccount is geblokkeerd.
+  password_reset_instruction: paswoord reset instructies
+
+  # Controllers.
+  #----------------------------------------------------------------------------
+  msg_account_created: Uw account is gecreëerd en wacht op goedkeuring van de systeemverantwoordelijke.
+  msg_account_not_approved: Uw account werd nog niet goedgekeurd.
+  msg_asset_deleted: "%{value} is verwijderd."
+  msg_asset_not_available: Dit %{value} is niet langer beschikbaar.
+  msg_asset_not_authorized: Jij hebt geen toelating om dit te zien   %{value}.
+  msg_assets_not_available: De %{value} zijn niet beschikbaar.
+  msg_asset_rejected: "%{value} is verworpen."
+  msg_bad_image_file: "^Kan aangeduid document niet opladen, gelieve formaat aan te passen."
+  msg_cant_create_related: "Kan %{asset} niet creëren want %{related} is niet langer geldig."
+  msg_cant_delete_user: "Couldn't delete the user since %{value} has related assets present."
+  msg_cant_do: "Can't %{action} the %{asset} since it's no longer available."
+  msg_email_not_found: Er werd geen gebruiker gevonden met die naam.
+  msg_enter_new_password: Geef uw nieuw paswoord in aub.
+  msg_goodbye: Je bent uitgelogd.
+  msg_invalid_password: "^Specifieer huidig paswoord aub"
+  msg_invalig_login: Ongeldige gebruikersnaam of paswoord.
+  msg_last_login: Uw laatste login was  %{value}.
+  msg_login_needed: Je moet inloggen om de volgende pagina te bekijken.
+  msg_logout_needed: Je moet uitgelogd zijn om volgende pagina te bekijken.
+  msg_password_changed: Uw paswoord is veranderd.
+  msg_password_not_changed: Uw paswoord is niet veranderd.
+  msg_password_updated: Uw paswoord werd met succes vernieuwd.
+  msg_pwd_instructions_sent: De instructies om uw paswoord te wijzigen werden u toegestuurd. Kijk in uw email aub.
+  msg_require_admin: Je moet Administrator zijn voor toegang tot deze pagina.
+  msg_successful_signup: Successvol ingeschreven, welkom!
+  msg_welcome: Welkom !
+
+  # Options.
+  #----------------------------------------------------------------------------
+  "option_amount*probability": weighted amount
+  activity_options: Toon %{models} activiteiten door %{user} in het verleden %{period} toegepast.
+  all_users: alle gebruikers
+  option_after: na
+  option_all: alle
+  option_all_users: Alle gebruikers
+  option_amount: hoeveelheid
+  option_before: voor
+  option_brief: kort
+  option_closes_on: close date
+  option_company: bedrijf
+  option_created_at: creatiedatum
+  option_ends_on: einddatum
+  option_first_name: voornaam
+  option_last_name: familienaam
+  option_leads_count: actual leads
+  option_long: lang
+  option_name: naam
+  option_probability: waarschijnlijkheid
+  option_rating: rating
+  option_revenue: actual revenue
+  option_starts_on: start datum
+  option_target_leads: target leads
+  option_target_revenue: target revenue
+  option_updated_at: datum update
+  show_per_page: Toon %{number} %{models} per pagina in %{fmt} formaat. 
+  sort_by: Sorteer volgens %{field}
+  sort_by_displaying: Sorteer %{models} volgens %{field} en toon voornaam %{position}
+    last name.
+  #sort_by: "Sorteer %{models} volgens   %{field}."
+  #sort_by_displaying: "Sorteer %{models} door %{field} voornaam %{position} familienaam te tonen." 
+
+  # Views -> Profile.
+  #----------------------------------------------------------------------------
+  aim: AOL IM
+  already_signed_up: Al ingetekend?
+  alt_email: Alternatief email adres
+  avatar: Avatar
+  change_password: Verander paswoord
+  company: Bedrijf
+  contact_info: Contactinformatie
+  current_password: Huidig paswoord
+  edit_profile: Vul profiel in
+  email: Email
+  first_name: Voornaam
+  google: Google IM
+  gravatar_help: Niet bekend met Gravatars? Leer meer over Gravatars
+  image_file: Image file
+  image_help: De afbeelding die je oplaadt wordt automatisch omgezet naar formaat 75 x 75 pixels. Ondersteunde formaten zijn GIF, JPG, and PNG.
+  job_title: Titel
+  last_name: Familienaam
+  login_now_link: Log nu in!
+  mobile: Mobiele telefoon
+  my_profile: Mijn profiel
+  new_password: Nieuw paswoord
+  password: Paswoord
+  password_confirmation: Bevestig nieuw paswoord
+  phone: Telefoon
+  profile: Profiel
+  profile_language: Taal
+  save_profile: Bewaar profiel
+  sign_up: Sign Up
+  sign_up_button: Sign Up
+  skype: Skype
+  upload_picture: Foto opladen.
+  use_gravatar: Gebruik Gravatar
+  user: Gebruik
+  username: Gebruikersnaam
+  yahoo: Yahoo IM
+
+  # Views -> Authenticate.
+  #----------------------------------------------------------------------------
+  forgot_password: Paswoord vergeten?
+  login: Login
+  no_account: Heb je geen account?
+  remember_me: Herinner mij!
+  sign_up_now: Teken nu in!
+
+  # Views -> Accounts.
+  #----------------------------------------------------------------------------
+  account: Bedrijf
+  select_an_account: Selecteer een Bedrijf
+  account_small: Bedrijf
+  account_summary: Bedrijf samenvatting
+  accounts: Bedrijven
+  accounts_options: Bedrijven Opties
+  accounts_small: bedrijven
+  assigned_to: Toegewezen aan
+  billing_address: Facturatie adres
+  create_account: Creëer Bedrijf
+  date_created: Creatiedatum
+  date_updated: Updatedatum
+  fax: Fax
+  pipeline: Pijplijn
+  intro: Je mag %{value} informatie later invoegen.
+  mobile_small: GSM
+  open_in_window: Open %{value} in een nieuw venster
+  mail_to: Mail naar %{value}
+  phone_small: telefoon
+  phone_toll_free: Toll-free
+  keep_private: Houd privé, deel niet met anderen
+  make_public: Deel met iedereen
+  same_as_billing: Zelfde als facturatie
+  save_account: Bewaar Bedrijf
+  share_with: Deel met de volgende mensen
+  shipping_address: Verzendadres
+  total_accounts: Totaal aantal Bedrijven
+  website: Website
+  vat: BTW
+  bank_account: Rekeningnummer
+  client_code: Klantnummer
+
+  # Views -> Campaigns. 
+  #----------------------------------------------------------------------------
+  actual: Actueel
+  actual_performance: Actuele Performantie
+  budget: Budget
+  budget_label: Budget ($)
+  campaign: Campagne
+  campaign_and_leads: campagne en leads
+  campaign_small: campagne
+  campaign_summary: Campagne Samenvatting
+  campaign_targets: Campagne Doelen
+  campaigns: Campagnes
+  campaigns_options: Campagnes Opties
+  campaigns_small: campagnes
+  conversion: Conversie
+  conversion_label: Conversie (%)
+  conversion_number: "%{value} conversie" 
+  create_campaign: Creëer Campagne
+  end_date: Einddatum
+  finished_on: beëindigd op %{value}
+  finishes_in: Loopt af binnen %{value}
+  no_start_date: geen startdatum gegevens
+  number_of_leads: Aantal leads
+  objectives: Objectieven
+  objectives_help: Geef aub aantal leads, verwachte leads-naar-opportuniteiten conversie ratio, doel inkomsten, en campagne budget. Deze aantallen laten toe om de performantie van de campagne op te volgen.
+  objectives_small: campagne objectieven
+  revenue: Inkomsten
+  revenue_label: Inkomsten (€)
+  revenue_number: "%{value} in inkomsten"
+  save_campaign: Bewaar Campagne
+  start_date: Startdatum
+  started_ago: gestart %{value} geleden
+  starts_in: start binnen %{value}
+  starts_today: start vandaag!
+  target: Doel
+  total_campaigns: Totaal Campagnes
+  was_supposed_to_finish: was geacht te eindigen op %{value}
+  was_supposed_to_start: was geacht te starten %{time_ago} geleden op %{start_date}
+  was_supposed_to_start_in: was geacht te starten binnen %{starts_in} op %{start_date}
+    
+  # Views -> Contacts.
+  #----------------------------------------------------------------------------
+  alt_email_small: Ander
+  blog: Website/Blog
+  contact: Contact
+  contact_small: contact
+  contacts: Contacten
+  contacts_options: Contactopties
+  contacts_small: contacten
+  create_contact: Creëer Contact
+  department: Afdeling
+  department_small: '%{value} afdeling'
+  do_not_call: Niet bellen
+  extra_info: Extra informatie
+  extra_info_small: extra contact
+  facebook: Facebook
+  linked_in: LinkedIn
+  myself: Mezelf
+  permissions_intro_private: By default alleen jij hebt toegang tot %{value}. Je kan de permissies later wijzigen.  
+  permissions_intro_public: By default alle gebruikers hebben toegang tot %{value}. Je kan de permissies later wijzigen.
+  permissions_intro_shared: By default alleen de aangeduide gebruikers hebben toegang tot %{value}. Je kan de permissies later wijzigen.
+  referred_by: Verwezen door
+  referred_by_small: verwezen door
+  save_contact: Bewaar Contact
+  twitter: Twitter
+  web_presence: Website
+  web_presence_small: web presence
+  works_at: "%{job_title} at %{company}"
+  key: Heeft sleutel
+  address_info : Adres informatie
+  insurance : Verzekering
+  contract : Contract getekend
+  children : Werkt met kinderen
+  therapists : Medewerkersinfo
+  born_on: Geboortedatum
+  coworker_info: Medewerkersinfo
+  scheduling: Planning
+  expertise: Expertise / Opleiding
+  education: Opleiding
+  birthplace: Geboorteplaats
+  rijksregnr: Rijksregister
+  website_user : Website user
+  website_user_created: Website user %{user} aangemaakt met paswoord %{password}
+  website_password_reset: Paswoord voor %{user} gewijzigd naar %{password}
+  mother_tongue: Moedertaal
+
+  # Views -> Leads.=> NIET VERTALEN
+  #----------------------------------------------------------------------------
+  convert: Converteer
+  convert_lead: Coverteer lead
+  convert_lead_permissions_intro: Contact permissies zullen gekopiëerd worden uit de lead. Je kan de permissies later wijzigen.
+  convert_lead_text: Door de lead %{value} te converteren wordt deze een contact geassociêerd met bestaande of nieuwe account. De lead status wordt automatisch op geconverteerd gezet.
+  create_lead: Creëer Lead
+  create_opp_for_contact: You can optionally create an opportunity for the %{value} contact by specifying the name, current stage, estimated closing date, sale probability, amount of the deal, and the discount offered.
+  lead: Lead
+  lead_info_small: lead contact
+  lead_permissions_intro_private: By default permissions will be copied from the campaign or set to private. You can change lead permissions later.
+  lead_permissions_intro_public: By default permissions will be copied from the campaign or set to public. You can change lead permissions later.  
+  lead_permissions_intro_shared: By default permissions will be copied from the campaign or shared with the specified users. You can change lead permissions later.  
+  lead_small: lead
+  lead_status_small: lead status
+  lead_summary: Lead Overzicht
+  leads: Leads
+  leads_options: Leads Opties
+  leads_small: leads
+  none: Geen
+  rating: Rating
+  reject: Reject
+  reject_lead_confirm: Ben je zeker dat je deze lead wil rejecten ?
+  save_lead: Bewaar Lead
+  source: Bron
+  status: Status
+  total_leads: Totaal Leads
+
+  # Views -> Opportunities. => NIET VERTALEN
+  #----------------------------------------------------------------------------
+  amount: Hoeveelheid
+  close_date: Einddatum
+  closed_ago_on: Gesloten %{time_ago} geleden op %{date}
+  closes_today: Wordt vandaag geacht te sluiten!
+  closing_date: Einddatum is %{value}
+  create_opportunity: Creëer Opportuniteit
+  currency: (€)
+  days_late: Te laat
+  days_left: Resterende dagen
+  discount: Korting
+  discount_number: met %{value} korting
+  expected_to_close: wordt geacht te sluiten in %{time} op %{date}
+  from: van
+  no_closing_date: geen einddatum
+  no_discount: zonder korting
+  opportunities: Opportuniteiten
+  opportunities_options: Opportuniteiten Opties
+  opportunities_small: opportuniteiten
+  opportunity: Opportuniteit
+  opportunity_small: opportuniteit
+  opportunity_summary: Opportuniteit Overzicht
+  opportunity_summary_text: "%{amount} met %{discount} korting en %{probability} probabiliteit" 
+  past_due: over tijd, was geacht te sluiten %{value} geleden
+  probability: Probabiliteit
+  probability_number: en %{value} probabiliteit
+  save_opportunity: Bewaar Opportuniteit
+  stage: Fase
+  total_opportunities: Totaal Opportuniteiten
+  weighted_amount: Gewogen hoeveelheid
+
+  # Views -> Tasks.
+  #----------------------------------------------------------------------------
+  assign_to: Wijs toe aan
+  assigned_tab: Toegewezen
+  assigned_tasks: Toegewezen taken
+  category: Categorie
+  completed_tab: Afgewerkt
+  completed_tasks: Afgewerkte taken
+  create_task: Creëer taak
+  create_task_small: creëer nieuwe taak
+  due: Gepland
+  feel_free: Actie 
+  move_to: ga naar
+  no_tasks: "Je hebt geen %{value} taken"
+  no_tasks_pending: hangend
+  no_tasks_assigned: toegewezen
+  no_tasks_completed: afgewerkt
+  pending_tab: Hangend
+  pending_tasks: Hangende taken
+  related: 're:'
+  save_task: Bewaar taken
+  task_assigned: De taak werd toegewezen aan %{value}
+  task_assigned_to: en toegewezen aan %{value}
+  task_completed: afgewerkt
+  task_completed_ago: afgewerkt %{value} geleden
+  task_completed_by: afgewerkt %{time_ago} geleden (%{date}) door %{user}
+  task_created: De taak werd gecreëerd
+  task_due_in: Gepland binnen %{value}
+  task_due_later: Vervalt binnenkort
+  task_due_now: vervalt nu
+  task_due_today: vervalt vandaag
+  task_from: Van %{value}
+  task_overdue: Te laat, verviel op
+  task_pending: De taak werd verwijderd uit de hangende taken
+  task_small: taken
+  tasks: Taken
+  total_tasks: Totaal %{value}
+  view_assigned_tasks: bekijk toegewezen taken
+  view_pending_tasks: bekijk hangende taken
+  
+  #  Views -> Email compositions.
+  #----------------------------------------------------------------------------
+  subject: Onderwerp
+  body: Inhoud
+  send_mail: Email sturen
+  save_as_mail : Mail bewaren
+  send_mail_to : Email zal verstuurd worden naar
+
+  # Views -> Home.
+  #----------------------------------------------------------------------------
+  action_completed: werkte af
+  action_create: creëerde
+  action_destroy: verwijderde
+  action_email: exchanged emails with
+  action_reassigned: reassigned
+  action_rejected: rejected
+  action_rescheduled: herplande
+  action_update: wijzigde
+  action_view: bekeek
+  action_won: gewonnen
+  activities: Activiteiten
+  no_activity_records: Geen activiteiten gevonden.
+  recent_activity: Recente acties
+  recent_activity_options: Recente Acties Opties
+  subject_address: adres voor
+  subject_account: bedrijf
+  subject_comment : commentaar op
+  subject_campaign: campagne
+  subject_contact: contact
+  subject_lead: lead
+  subject_opportunity: opportuniteit
+  subject_task: taak
+  subject_email : email voor
+  subject_user : gebruiker
+  create_past_participle: Record Creaties
+  view_past_participle: Raadplegingen
+  update_past_participle: Wijzigingen
+  destroy_past_participle: Verwijderingen
+
+  all_events_past_participle: Activiteiten
+  
+  # Views -> Common.
+  #----------------------------------------------------------------------------
+  add_note: Voeg notitie toe
+  save_note: Bewaar notitie
+  add_note_help: Voeg een nieuwe notitie toe...
+  edit_note: Wijzig notitie
+  added_ago: "%{value} geleden toegevoegd"
+  added_by: "%{time_ago} geleden toegevoegd door %{user}" 
+  back: Terug
+  cancel: Annuleer
+  close_form: Sluit formulier
+  confirm_delete: Bent u zeker dat u deze %{value} wilt verwijderen ?
+  copy_permissions: Kopiëer %{value} permissies
+  could_not_find: "Kon geen %{value} vinden. Actie :"
+  could_not_find_matching: "Kon %{value} niet vinden overeenkomend met"
+  create_new: Creëer nieuw
+  select_existing: Selecteer bestaand
+  delete: Verwijder
+  discard: Schrap
+  edit: Wijzig
+  items_total: '%{count} totaal.'
+  less: Minder...
+  me: mij
+  more: Meer...
+  n_a: N/A
+  name: Naam
+  no_match: Geen %{value} match
+  no_recent_items: Geen recente items te tonen.
+  options: Opties
+  permissions: Permissies
+  please_retry: Probeer een andere query.
+  recent_items: Recente Items
+  select_contact: Selecteer Contact
+  select_lead: Selecteer Lead
+  select_task: Selecteer Taak
+  select_opportunity: Selecteer Opportuniteit
+  search_assets: Zoek %{value}
+  time_ago: "%{value} geleden"
+  background_info: Achtergrond
+  address: Adres
+  street1: Straat 1 # NEW
+  street2: Straat 2 # NEW
+  city: Stad
+  zipcode: Postcode
+  state: Staat
+  country: Land
+  select_a_country: Selecteer een Land
+  languages: Talen
+  select_deselect_all: Alles (de)selecteren
+
+  # Views -> Layout.
+  #----------------------------------------------------------------------------
+  about: Over
+  about_dev_group: Discussion group for developers
+  about_features: Features and bugs
+  about_ffc: Aver Effict
+  about_ffc_resources: Talenhuis CRM resources (links open a new window)
+  about_ffc_version: Talenhuis CRM version
+  about_home_page: Home page
+  about_project_page: Project page
+  about_thank_you: Thank you for using this software! We appreciate your business and hope you enjoy using the software.
+  about_twitter: Twitter commit updates
+  about_user_group: Discussion group for users
+  admin: Admin
+  logout: Logout
+  quick_find: Snel zoeken
+  welcome: Welkom
+  
+# Views -> Advanced Search.
+  accounts_advanced_search: Bedrijven Geavanceerd zoeken
+  advanced_search: Geavanceerd zoeken
+  advanced_search_submit: Zoek
+  advanced_search_add_group: Voeg groep filters toe
+  advanced_search_group_first: Toon resultaten waar %{combinator} van volgende overeenkomt
+  advanced_search_group_rest: ...en waar %{combinator} van volgende overeenkomt
+  advanced_search_add_condition: Voeg filter toe
+  advanced_search_remove_condition: Verwijder filter
+  basic_search: Eenvoudig zoeken
+  search_results_count:
+    one: "%{count} resultaat gevonden"
+    other: "%{count} resultaten gevonden"
+
+  ransack:
+    predicates:
+      eq: is
+      not_eq: is niet
+      lt: is kleiner dan
+      gt: is groter than
+      matches: komt overeen met
+      does_not_match: komt niet overeen met
+      cont: bevat
+      not_cont: bevat niet
+      blank: is leeg
+      present: is ingevuld
+      "null": is onbekend
+      not_null: is niet onbekend
+
+  # Views -> Comments.
+  #----------------------------------------------------------------------------
+  comment : Commentaar
+  edit_comment: Wijzigen commentaar
+  show: Toon
+  update: Wijzig
+  following_users_will_be_notified: De volgende users zullen op de hoogte gebracht worden via mail
+  notifications_tooltip: Subscribers zullen nieuwe commentaren ontvangen via mail
+  subscribe_via_email: Subscribe via mail
+  disable_email_subscriptions: Annuleer email subscription
+  email : Email
+
+
+  # Views -> Passwords.
+  #----------------------------------------------------------------------------
+  confirm_password_intro: Typ je nieuw paswoord en bevestig.
+  password_intro: Geef jouw mailadres, en instructies om je paswoord te resetten worden opgestuurd.
+  reset_password: Reset Paswoord
+  update_password_and_login: Wijzig paswoord en login
+
+  # Views -> Admin
+  #----------------------------------------------------------------------------
+  back_to_crm: Terug naar Talenhuis CRM
+  crm_admin_page: Administratie
+
+  # Views -> Admin -> Users.
+  #----------------------------------------------------------------------------
+  approve: Goedkeuren
+  create_user: Creëer User
+  last_seen: laatst gezien %{value} geleden
+  personal_information: Persoonlijke informatie
+  reactivate: Heractiveer
+  save_user: Bewaar User
+  suspend: Suspendeer
+  user_active: Actief
+  user_admin: Admin
+  user_awaits_approval: wacht op jouw goedkeuring
+  user_confirm_delete: A user can only be deleted if no related assets are left behind.
+  user_is_admin: De user is Administrator
+  user_never_logged_in: "heeft nog niet ingelogd"
+  user_signed_up: Signed Up
+  user_signed_up_on: signed up op %{value}
+  user_since: user sinds %{value}
+  user_suspended: Gesuspendeerd
+  user_suspended_on: Gesuspendeeerd op %{value}
+  users: Users
+  users_small: users
+  privileges: Privileges
+  read_only: Enkel lezen
+  read_write: Wijzigen
+  
+  # Views -> Versions
+  #----------------------------------------------------------------------------
+  versions: Historiek
+  version:
+    create: "%{item} gecreëerd door %{by}"
+    update: "%{item} gewijzigd door %{by}"
+    destroy: "%{item} verwijderd door %{by}"
+    set: "%{attr} gewijzigd naar %{to}"
+    unset: "%{attr} leeggemaakt"
+    change: "%{attr} gewijzigd van %{from} naar %{to}"
+    anonymous: anonymous
+
+  # Export.
+  #----------------------------------------------------------------------------
+  to_xls: Exporteer naar Excel
+  to_csv: Exporteer naar comma-delimited file format (inclusief deleted records)
+  to_rss: RSS feed
+  to_atom: Atom feed
+
+  # Dropbox.
+  #----------------------------------------------------------------------------
+  dropbox_notification_subject: dropbox - Added email - %{subject}
+  dropbox_notification_intro: Succesfully added the email you sent to dropbox
+  dropbox_notification_to: Added to
+  subject: Subject
+  body: Body
+
+# Comment Inbox
+  #----------------------------------------------------------------------------
+  comment_notification:
+    intro: "%{user_full_name} commented on %{entity_type}: %{entity_name}"
+    reply_instructions: "Reply to this email directly to add a new comment, or view the %{entity} online"
+
+  # Lists
+  #----------------------------------------------------------------------------
+  lists: Lijsten
+  list: Lijst
+  no_saved_lists: Geen opgeslagen lijsten
+  make_current_view_list: Maak van huidige selectie een lijst
+  list_name_info: Als je de naam van een bestaande lijst gebruikt, zal deze overschreven worden
+
+
+
+  # Pluralizations.
+  #----------------------------------------------------------------------------
+  pluralize:
+    comment:
+      one: '1 commentaar'
+      other: '%{count} commentaren'
+    contact: 
+      one: '1 contact'
+      other: '%{count} contacten'
+    opportunity:
+      one: '1 opportuniteit'
+      other: '%{count} opportuniteiten'
+    lead:
+      one: '1 lead'
+      other: '%{count} leads'
+    day:
+      one: '1 dag'
+      other: '%{count} dagen'
+    login:
+      one: '1 login'
+      other: '%{count} logins'
+
+  # Custom date/time formats.
+  #----------------------------------------------------------------------------
+  date:
+    formats:
+      mmddyyyy: "%d/%m/%Y"
+      mmdd: "%b %e"
+      mmddyy: "%b %e, %Y"
+      hhmm: "%H:%M"
+
+  time:
+    formats:
+      mmddhhss: "%b %e om %l:%M%p"
+      mmddyyyy_hhmm: "%d/%m/%Y %H:%M"
+      hhmm: "%H:%M"
+
+  calendar_date_select:
+    ok: OK
+    now: Nu
+    today: Vandaag
+    clear: Wis
+
+  # If you need custom format look at 
+  # http://code.google.com/p/calendardateselect/wiki/ChangingDateFormatCustom
+  calendar_date_select_format: italian
+
+# Views -> Admin -> Custom Fields
+  #----------------------------------------------------------------------------
+  label: Label
+  custom_fields: Custom Fields
+  custom_field_options: Custom Field Options
+  create_field: Create field
+  save_field: Save field
+  create_field_group: Create field group
+  edit_field_group: Edit field group
+  save_field_group: Save field group
+
+  field_group_empty: There are no fields in this group.
+
+  select_or_create_tags: Selecteer tags, of maak een nieuwe tag door op 'enter' te klikken
+
+  restrict_by_tag: Restrict by Tag
+  restrict_by_tag_info: Only show fields for %{assets} that are tagged with
+  field_group_tag_restriction: This field group applies to %{assets} tagged with "%{tag}"
+  field_group_unrestricted: This field group applies to all %{assets}
+  field_group_confirm_delete: If a field group is deleted, any fields will be moved to the default field group.
+  msg_cant_delete_field_group: Field Group could not be deleted.
+
+  admin_fields_info: |
+    Custom fields are displayed in groups.
+    Create a new field group, or add fields to one of the groups below.<br />
+    You can drag and drop fields to change their display order or move them between field groups.
+
+  # Views -> Admin -> Tags
+  #----------------------------------------------------------------------------
+  tags: Tags
+  tag_small: tag
+  tagged: Getagd
+  create_tag: Creëer Tag
+  save_tag: Bewaar Tag
+  field_group_tags: Field Groups shown for this Tag
+  tag_with_taggings_confirm_delete: "If this tag is deleted, it will be removed from %{value} records."
+  msg_cant_delete_tag: "Couldn't delete '%{value}' since it has associated Field Groups."
+
+  # Simple Form translations
+  #----------------------------------------------------------------------------
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Some errors were found, please take a look:"
+    # Labels and hints examples
+    # labels:
+    #   password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail para efetuar o sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   username: 'User name to sign in.'
+    #   password: 'No special characters, please.'
+
+
+  # Form field types
+  #----------------------------------------------------------------------------
+  field_types:
+    string:      Short Answer
+    text:        Long Answer
+    select:      Select List
+    multiselect: Multi Select
+    radio:       Radio Buttons
+    boolean:     Checkbox
+    check_boxes: Checkbox List
+    date:        Date
+    datetime:    Date & Time
+    email:       Email Address
+    url:         URL
+    tel:         Phone Number
+    decimal:     Number (Decimal)
+    integer:     Number (Integer)
+    float:       Number (Floating Point)
+
+
+  # Toegevoegd door Effict
+  #----------------------------------------------------------------------------
+  
+  all : Alle
+  any : Eender welk
+  
+  document: Bestand
+  documents: Bestanden
+  
+  bedrijfsopleidingen-be : Bedrijfsopleidingen.be
+  internet : Internet
+  
+  #Documents
+  create_document : Creëer document
+  select_document : Selecteer document
+  file : Bestand
+  
+  #TRAININGS-EVALUATIONS
+  tab_trainings : Trainingen
+  subject_training : training
+  trainings : Trainingen
+  create_training : Creëer training
+  training_small : training
+  trainings_small : trainingen
+  trainings_options : Opties
+  training_summary : Overzicht training
+  select_trainer : Selecteer trainer
+  duration : duur
+  starts : start op
+  ends : eindigt op
+  startdate : Startdatum
+  enddate : Einddatum
+  option_startdate : Startdatum
+  option_cf_datum_volgende_actie : Datum volgende actie
+  responsible : Verantwoordelijke
+  
+  create_training_target : Creëer doel
+  training_target : doel
+  training_targets : Doelen
+  create_training_date : Creëer trainingsdatum
+  training_dates : Trainingsdata
+  trainers : Trainers
+  starttime : Startuur
+  remark : Opmerking
+  
+  evaluation : Evaluatie
+  tab_evaluations : Evaluaties
+  subject_evaluation : evaluatie
+  create_evaluation : Creëer evaluatie
+  select_evaluation : Selecteer evaluatie  
+  evaluations : Evaluaties
+  evaluations_small : evaluaties
+  
+  begin : Begin
+  tussentijds : Tussentijds
+  eind : Eind
+  eind_trainer : Eind
+  
+  user_is_trainer : User is trainer
+  
+  klant : Klant
+  vertaler : Vertaler
+  trainer : Trainer
+  tolk : Tolk
+  cursist : Cursist
+  
+  th_customer: Klant
+  th_translator: Vertaler
+  th_trainer: Trainer
+  th_interpreter: Tolk
+  th_cursist: Cursist
+  
+  reopen: Heropen
+  
+  no_lead_records : Geen leads gevonden
+  no_task_records : Geen taken gevonden
+  screening_report : Screening Rapport
+  new_tasks : Nieuwe taken (laatste 10)
+  new_leads_website : Nieuwe leads via Talenhuis website
+  
+  open : Open
+  confirmed : Bevestigd
+  cancelled : Geannuleerd
+  confirm: Bevestig
+  converted : Geconverteerd
+  
+  expand_all : Alles uitklappen
+  collapse_all : Alles inklappen
+  
+  user_is_customer : De user is klant
+  user_is_customer_responsible : De user is opleidingsverantwoordelijke
+  
+  option_subject : Titel
+  option_date_sent : Datum verzonden
+  mailings_small : mailings
+  mailings_options : Mailings Opties
+  titel : Titel
+  tekst : Tekst inhoud
+  html : HTML inhoud
+  create_mailing : Creëer mailing
+  bcc : BCC
+  cc : CC
+  to : To
+
+  error: Fout
+  in_wait: In wachtrij
+  draft: Draft
+  sent: Verzonden
+  processing: Wordt momenteel verzonden...
+  duplicate : Dupliceer
+  save_evaluation : Bewaar evaluatie
+  create_a_new : creëer een 
+  mailinglists_options : Groepopties
+  mailinglists_small : groepen
+  
+  rate : Tarief
+
+  

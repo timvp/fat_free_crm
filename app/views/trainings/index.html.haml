@@ -1,0 +1,20 @@
+= styles_for :training
+
+= render 'entities/title_bar'
+
+.remote#create_training{ hidden }
+
+-#TODO EFFICT
+-#= render "search"
+
+.remote#options{ hidden }
+
+
+.list#trainings
+  - if @trainings.any?
+    = render @trainings
+  - else
+    = render "shared/empty"
+
+#paginate= render "shared/paginate"
+#export= render "shared/export"

@@ -27,6 +27,8 @@ class Admin::UsersController < Admin::ApplicationController
   # GET /admin/users/new.xml                                               AJAX
   #----------------------------------------------------------------------------
   def new
+	@customers = Account.my.order('name')
+    @contacts = Contact.my.order('first_name, last_name')
     respond_with(@user)
   end
 
@@ -37,6 +39,8 @@ class Admin::UsersController < Admin::ApplicationController
       @previous = User.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
+    @customers = Account.my.order('name')
+    @contacts = Contact.my.order('first_name, last_name')
     respond_with(@user)
   end
 
@@ -47,6 +51,9 @@ class Admin::UsersController < Admin::ApplicationController
     params[:user][:password_confirmation] = nil if params[:user][:password_confirmation].blank?
     @user = User.new(user_params)
     @user.save_without_session_maintenance
+    
+    @customers = Account.my.order('name')
+    @contacts = Contact.my.order('first_name, last_name')
 
     respond_with(@user)
   end
@@ -59,6 +66,9 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
     @user.attributes = user_params
     @user.save_without_session_maintenance
+    
+    @customers = Account.my.order('name')
+    @contacts = Contact.my.order('first_name, last_name')
 
     respond_with(@user)
   end

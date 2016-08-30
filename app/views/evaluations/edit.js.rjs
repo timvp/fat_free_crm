@@ -1,0 +1,45 @@
+id = dom_id(@evaluation)
+
+if params[:cancel].true?     # <----------------- Hide [Edit Evaluation]
+
+  page << "for (var i in CKEDITOR.instances) {                       
+            (function(i){             
+                CKEDITOR.instances[i].destroy();                    
+            })(i);                                                  
+           };"   
+           
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_evaluation
+    page.call "crm.set_title", :edit_evaluation, h(@evaluation.name)
+  else                                            # Called from evaluations list item...
+    page[id].replace :partial => "evaluation", :collection => [ @evaluation ]
+  end
+
+else # <----------------------------------------- Show [Edit Evaluation] form.
+
+  if params[:cancel].blank?                       # Called from evaluations list item...
+    if @previous                                  # Hide open [Edit Evaluation] form if any.
+      if @previous.is_a?(Evaluation)
+        page[dom_id(@previous)].replace :partial => "evaluation", :collection => [ @previous ]
+      else
+        page.call "crm.flick", "evaluation_#{@previous}", :remove
+      end
+    end
+    page.call "crm.highlight_off", id             # Disable onMouseOver for the list item.
+    page.call "crm.hide_form", :create_evaluation    # Hide [Create Evaluation] form if any.
+    page[id].replace_html :partial => "edit"      # Show [Edit Evaluation] form.
+
+  elsif params[:cancel].false?                    # Called from title of the evaluation landing page...
+    page[:edit_evaluation].replace_html :partial => "edit"
+    page.call "crm.flip_form", :edit_evaluation
+    page.call "crm.set_title", :edit_evaluation, "#{t :edit} #{h(@evaluation.name)}"
+  end
+
+#  page.call "crm.date_select_popup", :evaluation_startdate
+#  page.call "crm.date_select_popup", :evaluation_enddate
+#  page.call "crm.create_or_select_account", request.referer =~ /\/accounts\// || @account.id.blank?
+  page[:evaluation_name].focus
+
+  hook(:edit_evaluation_rjs, self, :page => page)
+end
+

@@ -1,0 +1,13 @@
+.section
+  %table
+    %tr
+      %td
+        .label.top.req #{t :name}:
+        = f.text_field :name
+      %td= spacer
+      %td
+        .label.req #{t :description}:
+        = f.text_area :description
+
+
+= hook(:mailinglist_top_section_after, self, :f => f)

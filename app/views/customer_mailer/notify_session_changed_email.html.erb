@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Beste <%= @contact.first_name %><p>
+    
+ 
+    <p>Volgende sessie van de training <%= @training_date.training.name %> is gewijzigd :</p>    
+    <p>
+    
+     <% if @training_date.previous_changes.key?("status") %>
+        <span style="color:red"><strong>Status : <%= t(@training_date.status) %></strong></span> (was : <%= t(@training_date.previous_changes[:status][0])%>)<br />
+      <% else %>
+         Status : <%=t(@training_date.status) %><br />
+      <% end %>
+    
+      <% if @training_date.previous_changes.key?("startdate") %>
+        <span style="color:red"><strong>Datum : <%= l(@training_date.startdate, :format => :mmddyyyy) %></strong></span> (was : <%= l(@training_date.previous_changes[:startdate][0])%>)<br />
+      <% else %>
+         Datum : <%= l(@training_date.startdate, :format => :mmddyyyy) %><br />
+      <% end %>
+    
+      <% if @training_date.previous_changes.key?("starttime") %>
+        <span style="color:red"><strong>Begint om : <%= l(@training_date.starttime, :format => :hhmm) %></strong></span> (was : <%= l(@training_date.previous_changes[:starttime][0], :format => :hhmm)%>)<br />
+      <% else %>
+         Begint om : <%= l(@training_date.starttime, :format => :hhmm) %><br />
+      <% end %>
+
+      <% if @training_date.previous_changes.key?("duration") %>
+        <span style="color:red"><strong>Duur : <%= l(@training_date.duration, :format => :hhmm) %></strong></span> (was : <%= l(@training_date.previous_changes[:duration][0], :format => :hhmm)%>)<br />
+      <% else %>
+         Duur : <%= l(@training_date.duration, :format => :hhmm) %><br />
+      <% end %>
+      
+      <% if @training_date.previous_changes.key?("remark") %>
+        <span style="color:red"><strong>Opmerking : <%=h(@training_date.remark)%></strong></span> <br />
+      <% else %>
+        Opmerking : <%=h(@training_date.remark)%><br />
+      <% end %>
+
+    </p>
+    
+    <p>
+      <a href="http://klantenportaal.talenhuis.be/trainings/<%= @training_date.training_id%>">Bekijk deze training op HT klantenportaal</a>
+    </p>
+    
+    <p>
+      Met vriendelijke groeten<br />
+      Het Talenhuis<br />
+      www.talenhuis.be<br />
+      klantenportaal.talenhuis.be<br />
+    </p> 
+     </body>
+</html>

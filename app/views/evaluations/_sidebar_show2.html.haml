@@ -1,0 +1,13 @@
+.panel#summary
+  %h4= h(@evaluation.name)
+  .caption #{t :evaluation_summary}
+
+    
+  -#= render "fields/sidebar_show", :asset => @evaluation
+  
+  -# if @evaluation.tag_list.present?
+    %dt
+      .tags= tags_for_index(@evaluation)
+
+
+  -#.caption #{t :evaluation_targets}

@@ -1,0 +1,12 @@
+= simple_form_for(@training_target, :html => one_submit_only(:training_target), :remote => true) do |f|
+  = link_to_close new_training_target_path
+  = hidden_field_tag "training_target[training_id]",  "#{@training.id  if @training}"
+
+  = f.error_messages :object_name => t('training_target')
+
+  = render "training_targets/top_section", :f => f
+
+  .buttonbar
+    = f.submit t(:create_training_target)
+    #{t :or}
+    = link_to_cancel new_training_target_path

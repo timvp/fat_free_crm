@@ -1,0 +1,6 @@
+if @mailings.any?
+  page[:mailings].replace_html render(:partial => "mailing", :collection => @mailings)
+else
+  page[:mailings].replace_html render(:partial => "shared/empty")
+end
+page[:paginate].replace_html render(:partial => "shared/paginate")

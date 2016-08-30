@@ -1,0 +1,66 @@
+= styles_for :training, :training_target, :training_date, :contact	
+
+#confirm{ hidden }
+.title_tools#menu
+  - if can? :update, @training
+    = link_to_inline(:edit_training, edit_training_path(@training), :text => t(:edit)) + " | "
+    = link_to t(:screening_report) + " | ", screening_report_training_path(@training, :format => :pdf)
+    = link_to_function(t(:delete) + '?', confirm_delete(@training))
+.title#edit_training_title= h(@training.name) 
+
+%div#edit_training{ hidden }
+
+= render "comments/new", :commentable => @training
+= render :partial => "shared/timeline", :collection => @timeline
+
+= hook(:show_training_bottom, self, {entity: @training}) do
+
+  = section(@training, :training_dates)
+  .list#training_dates
+    - @training_dates = @training.training_dates.paginate(:page => 1, :per_page => 200)
+    = render :partial => "training_dates/training_date", :collection => @training.training_dates.paginate(:page => 1, :per_page => 200)
+    
+  -#= section(@training, :trainers)
+  = tag(:br)
+  = content_tag(:div, link_to(t("select_trainer"), "#", :id => "select_trainer"), :class => "subtitle_tools")
+  = content_tag(:div, t(:trainers), :class => :subtitle, :id => "create_trainer_title")
+  .list#trainers
+    - @trainers = @training.trainers.paginate(:page => 1, :per_page => 20)
+    = render :partial => "trainers/trainer", :collection => @trainers
+    
+  = render "contacts/contacts", :object => @training
+  
+  = section(@training, :contacts)
+  .list#contacts
+    = render :partial => "contacts/contact", :collection => @training.contacts
+
+  = section(@training, :training_targets)
+  .list#training_targets
+    - @training_targets = @training.training_targets.paginate(:page => 1, :per_page => 20)
+    = render :partial => "training_targets/training_target", :collection => @training.training_targets.paginate(:page => 1, :per_page => 20)
+    
+  = section(@training, :evaluations)
+  .list#evaluations
+    - @evaluations = @training.evaluations.paginate(:page => 1, :per_page => 20)
+    = render :partial => "evaluations/evaluation", :collection => @training.evaluations.paginate(:page => 1, :per_page => 20)
+      
+  = section(@training, :documents)
+  .list#documents
+    - @documents = @training.documents.paginate(:page => 1, :per_page => 20)
+    = render :partial => "documents/document", :collection => @training.documents.paginate(:page => 1, :per_page => 20)
+    
+      
+  <br/><br/>
+  -#if @training.cf_screening_info
+    .panel#panel_screening_info
+      == #{@training.cf_screening_info.html_safe}
+    <br />
+    
+    
+  = load_select_popups_for(@training, :contacts, :trainers)
+  
+  = hook(:show_training_bottom, self)
+    
+%iframe#uploading{ :name => "uploading", :style => "width:100px; height:10px; border:5px" }
+  
+

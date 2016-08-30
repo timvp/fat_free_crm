@@ -24,18 +24,32 @@
 
     %dt{ :style => "padding: 2px 0px 0px 0px" }
       - if can?(:read, contact)
+        - if controller.controller_name == 'contacts'
+          = check_box_tag 'contact_ids[]', contact.id
         - if contact.email.present?
           = link_to_email(contact.email)
+          |
+        - if contact.business_address.street1.present? || contact.business_address.city.present?
+          = contact.business_address.street1 + " " + contact.business_address.zipcode + " " + contact.business_address.city
           |
         - if contact.phone.present?
           == #{t :phone_small}:
           %b= contact.phone
-        |
+          |
         - if contact.mobile.present?
           == #{t :mobile_small}:
           %b= contact.mobile
           |
-      = t(:added_ago, value: timeago(contact.created_at)).html_safe
+        - if contact.cf_uurtarief.present?
+          == #{t :tarief}:
+          %b= contact.cf_uurtarief
+          |
+        - if contact.cf_regel_woordtarief.present?
+          == #{t :tarief}:
+          %b= contact.cf_regel_woordtarief
+          -#|
+      -#Effict : dit in commentaar gezet omdat anders de select popups + snel zoeken niet werken ; heel onduidelijk waarom 
+      -#= t(:added_ago, value: timeago(contact.created_at)).html_safe
 
     - if contact.tag_list.present?
       %dt

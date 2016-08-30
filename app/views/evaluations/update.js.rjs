@@ -1,0 +1,25 @@
+id = called_from_landing_page? ? "edit_evaluation" : dom_id(@evaluation)
+
+if @evaluation.errors.empty?
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_evaluation
+    page.call "crm.set_title", :edit_evaluation, @evaluation.name
+    page << refresh_sidebar(:show, :summary)
+  else
+    page[id].replace :partial => "evaluation", :collection => [ @evaluation ]
+    page[id].visual_effect :highlight, :duration => 1.0
+    if called_from_index_page?
+      page << refresh_sidebar(:index, :filters)
+    else
+      page[:recently].replace :partial => "shared/recently"
+    end
+  end
+else
+  page[id].replace_html :partial => "edit"
+  #page.call "crm.date_select_popup", :evaluation_starts_on
+  #page.call "crm.date_select_popup", :evaluation_ends_on
+  #page.call "crm.create_or_select_account", request.referer =~ /\/accounts\// || @account.id.blank?
+  page[id].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:evaluation_name].focus
+end
+

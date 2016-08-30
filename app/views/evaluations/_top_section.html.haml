@@ -1,0 +1,38 @@
+= hook(:evaluation_top_section, self, :f => f) do
+  .section
+    %table
+      %tr
+        %td
+          .label.top.req #{t :name}:
+          = f.text_field :name
+      -#%tr
+        %td
+          .label.top #{t :startdate}:
+          = f.text_field :startdate, :value => f.object.startdate ? l(f.object.startdate, :format => :mmddyyyy) : "", :style => "width:110px", :autocomplete => :off
+        %td= spacer
+        %td
+          .label.top #{t :enddate}, 
+          = f.text_field :enddate, :value => f.object.enddate ? l(f.object.enddate, :format => :mmddyyyy) : "", :style => "width:110px", :autocomplete => :off
+      %tr
+        %td
+          .label #{t :assigned_to}:
+          = user_select(:evaluation, User.without(current_user), current_user)
+      -#%table
+        = fields_for(@account) do |a|
+          = a.hidden_field :user_id
+          = a.hidden_field :assigned_to
+          = a.hidden_field :access, :value => Setting.default_access
+          %tr
+            %td
+              != account_select_or_create(a) do |options|
+                - # Add [-- None --] account choice when editing existing training that has an account.
+                - options[:include_blank] = "" unless @evaluation.new_record? || @evaluation.account.blank?
+            %td= spacer
+            %td
+              .label #{t :assigned_to}:
+              = user_select(:evaluation, User.without(current_user), current_user)
+
+          
+
+   
+   

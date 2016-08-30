@@ -1,0 +1,11 @@
+page.call "crm.flick", :empty, :toggle
+#page.call "crm.hide_form", :options if called_from_index_page?
+page.call "crm.flip_form", :create_training_date
+
+unless params[:cancel].true?
+  page[:create_training_date].replace_html :partial => "new"
+  page.call "crm.set_title", :create_training_date, t(:create_training_date)
+  page.call "crm.date_select_popup", :training_date_startdate
+else
+  page.call "crm.set_title", :create_training_date, t(:training_dates)
+end

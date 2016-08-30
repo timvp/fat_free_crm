@@ -1,18 +1,44 @@
 
-= styles_for :task, :opportunity, :account
+= styles_for :task, :opportunity, :account, :lead
+
+= styles_for :task, :lead
 
 .title
+  %span#title #{t :new_leads_website}
+%ul.list#leads
+  - unless @leads.empty?
+    = render :partial => "leads/lead", :collection => @leads
+  - else
+    #{t :no_lead_records}
+    
+.title
+  %span#title #{t :new_comments}
+%ul.list#comments
+  - unless @comments.empty?
+    = render :partial => "shared/comment", :collection => @comments
+  - else
+    #{t :no_comment_records}
+
+.title
+  %span#title #{t :new_tasks}
+%ul.list#newtasks
+  - unless @tasks.empty?
+    = render :partial => "tasks/pending", :collection => @tasks, :locals => { :bucket => 'due_asap' }
+  - else
+    #{t :no_task_records}
+
+-#.title
   %span#title #{t :my_tasks}
-%ul.list#tasks
+-#%ul.list#tasks
   - unless @my_tasks.empty?
     = render :partial => "home/task", :collection => @my_tasks.limit(10)
     = show_hidden_entities_message(@my_tasks.count, 'task', 10)
   - else
     #{t :no_task_records}
 
-.title
+-#.title
   %span#title #{t :my_opportunities}
-%ul.list#opportunities
+-#%ul.list#opportunities
   - unless @my_opportunities.empty?
     = render :partial => "home/opportunity", :collection => @my_opportunities.limit(10)
     = show_hidden_entities_message(@my_opportunities.count, 'opportunity', 10)

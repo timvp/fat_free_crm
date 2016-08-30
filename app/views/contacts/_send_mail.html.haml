@@ -1,0 +1,55 @@
+-#.remote
+.dummy
+  = form_for(@emailComposition, :html => {:multipart => true}, :remote => false) do |f|
+    -#= link_to_close edit_contact_path(@contact)
+    -#= f.hidden_field :user_id
+    
+    -#= f.hidden_field :contactids
+      
+    %br
+    
+    - @emailComposition.contactids.each do |id|
+      = hidden_field_tag "email_composition[contactids][]", id     
+    
+    = f.error_messages :object_name => t('email')
+    
+    %table
+      %tr
+        %td
+          .label.top #{t :save_as_mail}:
+          = f.check_box :save_as_mail
+      %tr
+        %td
+          .label.top #{t :subject}:
+          = f.text_field :subject
+      %tr
+        %td
+          .label.top #{t :cc}:
+          = f.text_field :cc
+      %tr
+        %td
+          .label.top #{t :bcc}:
+          = f.text_field :bcc
+      %tr
+        %td
+          .label.top #{t :body}:
+          = f.text_area :body,  :size => "80x18"
+      %tr
+        %td
+          .label.top #{t :attachment}:	
+          = file_field_tag :attachment
+   
+    %br
+    
+    - if @contacts
+      = t :send_mail_to
+      \:
+      %br/
+      %br/
+      - @contacts.each do |contact|
+        = contact.email << " "
+        \,
+
+
+    .buttonbar
+      = f.submit t(:send_mail)

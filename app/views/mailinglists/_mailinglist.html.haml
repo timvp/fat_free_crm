@@ -1,0 +1,13 @@
+%li.highlight[mailinglist]
+  %ul.tools
+    - if can?(:update, mailinglist)
+      %li= link_to_edit(mailinglist)
+
+    -# if shown_on_landing_page?
+      %li= link_to_discard(mailinglist)
+
+    - if can?(:destroy, mailinglist)
+      %li= link_to_delete(mailinglist)
+  = link_to mailinglist.name , mailinglist_path(mailinglist)
+  %tt
+    = mailinglist.description

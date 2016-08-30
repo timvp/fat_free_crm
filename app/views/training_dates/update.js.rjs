@@ -1,0 +1,23 @@
+id = called_from_landing_page? ? "edit_training_date" : dom_id(@training_date)
+
+if @training_date.errors.empty?
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_training_date
+    page.call "crm.set_title", :edit_training_date, @training_date.name
+    page << refresh_sidebar(:show, :summary)
+  else
+    page[id].replace :partial => "training_date", :collection => [ @training_date ]
+    page[id].visual_effect :highlight, :duration => 1.0
+    page << refresh_sidebar(:index, :filters)
+  end
+else
+  page[id].replace_html :partial => "edit"
+  #page.call "crm.date_select_popup", :training_date_starts_on
+  #page.call "crm.date_select_popup", :training_date_ends_on
+  page[id].visual_effect :shake, :duration => 0.25, :distance => 6
+  if @training_date.errors[:name].blank? and @training_date.errors[:ends_on].present?
+    page[:training_date_ends_on].focus
+  else
+    page[:training_date_name].focus
+  end
+end

@@ -1,0 +1,26 @@
+.panel#summary
+  %h4= h(@training.name)
+  .caption #{t :training_summary}
+  %li
+    %dt= @training.account.name if @training.account
+    %tt #{t :account}:
+  - if can?(:read, @training.account)
+    %li 
+      %dt= @responsible.full_name if @responsible
+      %tt #{t :responsible}:
+  %li
+    %dt= @training.startdate.strftime('%b %e, %Y') if @training.startdate
+    %tt #{t :startdate}:
+
+  %li.last
+    %dt= @training.enddate.strftime('%b %e, %Y') if @training.enddate
+    %tt #{t :enddate}:
+    
+  = render "fields/sidebar_show", :asset => @training
+  
+  -# if @training.tag_list.present?
+    %dt
+      .tags= tags_for_index(@training)
+
+
+  -#.caption #{t :training_targets}

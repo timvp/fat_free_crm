@@ -1,0 +1,21 @@
+if @mailing.valid?
+  if called_from_index_page?
+    page[:create_mailing_arrow].replace_html "&#9658;"
+    page[:create_mailing_title].replace_html t(:mailings)
+    page.visual_effect :toggle_blind, :create_mailing, :duration => 0.3, :afterFinish => 'function(effect) {effect.element.update("")}'
+    page.insert_html :top, :mailings, :partial => "mailing", :collection => [ @mailing ]
+    page[dom_id(@mailing)].visual_effect :highlight, :duration => 1.5
+    if called_from_index_page?
+      page << refresh_sidebar(:index)
+      #page[:paginate].replace_html render(:partial => "common/paginate")
+    end
+    #page.call "crm.flick", :empty, :remove
+  else
+    page.call "crm.flip_form", :create_mailing
+    #page.call "crm.set_title", :create_mailing, @mailing.subject
+  end
+else
+  page[:create_contact].replace_html :partial => "create"
+  page[:create_mailing].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:mailing_name].focus
+end

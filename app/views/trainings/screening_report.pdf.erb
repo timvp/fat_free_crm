@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Screening Rapport </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+ 
+<body>
+
+
+<%= wicked_pdf_stylesheet_link_tag "documents" %>
+ 
+<div class="document">
+<h1><%= @training.name %></h1>
+
+<h2>Profiel</h2>
+<div><%= @training.cf_screening_info.html_safe%></div>
+
+<h2>Trainer(s)</h2>
+<ul>
+  <% for @trainer in @training.trainers %>
+    <li><%= @trainer.full_name %></li>
+  <% end %>
+</ul>
+
+<h2>Deelnemer(s)</h2>
+<ul>
+  <% for @contact in @training.contacts %>
+    <li><%= @contact.full_name %></li>
+  <% end %>
+</ul>
+  
+<h2>Data</h2>
+<ul>
+  <% for @training_date in @training.training_dates %>
+    <Li><%= l @training_date.startdate %> -  <%=  l @training_date.starttime, :format => "%Hu%M" %> (duur  <%=  l @training_date.duration, :format => "%Hu%M" %>)
+        | <%= t @training_date.status %>
+        <%if @training_date.remark%>
+          | <%= @training_date.remark %>
+        <%end%>
+     </li>
+  <% end %>
+</ul>
+
+<h2>Doelen</h2>
+<ul>
+  <% for @training_target in @training.training_targets %>
+    <li><%= @training_target.title %><br /><%= h(@training_target.description.html_safe)%></li>
+  <% end %>
+</ul>
+
+<h2>Methodes</h2>
+<%if @training.cf_e_learning%>
+<div> <%=@training.cf_e_learning_module %></div>
+<%end%>
+<div><%= @training.cf_methode%></div>
+</div>
+
+</body>
+</html>

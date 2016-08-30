@@ -1,0 +1,21 @@
+id = called_from_landing_page? ? "edit_mailinglist" : dom_id(@mailinglist)
+
+if @mailinglist.errors.empty?
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_mailinglist
+    page.call "crm.set_title", :edit_mailinglist, @mailinglist.name
+    # page << refresh_sidebar(:show, :summary)
+  else
+    page[id].replace :partial => "mailinglist", :collection => [ @mailinglist ]
+    page[id].visual_effect :highlight, :duration => 1.0
+    if called_from_index_page?
+      page << refresh_sidebar(:index)
+    else
+      page[:recently].replace :partial => "common/recently"
+    end
+  end
+else  
+  page[id].replace_html :partial => "edit"
+  page[id].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:mailinglist_name].focus
+end

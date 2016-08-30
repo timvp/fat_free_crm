@@ -5,11 +5,16 @@
 #------------------------------------------------------------------------------
 class AuthenticationsController < ApplicationController
   before_action :require_no_user, only: [:new, :create, :show]
-  before_action :require_user, only: :destroy
+  #before_action :require_user, only: :destroy
 
   #----------------------------------------------------------------------------
   def new
     @authentication = Authentication.new
+    return_to = session[:return_to].to_s
+    if return_to.include?('portal')
+      render "portal/portal/authentication", :layout => "portal/logon"
+      return
+    end
   end
 
   #----------------------------------------------------------------------------
@@ -24,7 +29,7 @@ class AuthenticationsController < ApplicationController
     if @authentication.save && !@authentication.user.suspended?
       flash[:notice] = t(:msg_welcome)
       if @authentication.user.login_count > 1 && @authentication.user.last_login_at?
-        flash[:notice] << " " << t(:msg_last_login, l(@authentication.user.last_login_at, format: :mmddhhss))
+        flash[:notice] << " " << t(:msg_last_login, l(@authentication.user.last_login_at, format: :mmddyyyy_hhmm))
       end
       redirect_back_or_default root_url
     else
@@ -44,8 +49,15 @@ class AuthenticationsController < ApplicationController
 
   #----------------------------------------------------------------------------
   def destroy
+	if @current_user.is_customer? || @current_user.is_trainer? || @current_user.is_customer_responsible?
+      homepage = 'portal'
+    end
     current_user_session.destroy
     flash[:notice] = t(:msg_goodbye)
-    redirect_back_or_default login_url
+        if homepage == 'portal'
+      redirect_to "/portal"
+    else
+      redirect_back_or_default login_url
+    end
   end
 end

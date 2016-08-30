@@ -1,0 +1,37 @@
+id = dom_id(@training_date)
+
+if params[:cancel].true?     # <----------------- Hide [Edit TrainingDate]
+
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_training_date
+    page.call "crm.set_title", :edit_training_date, h(@training_date.name)
+  else                                            # Called from training_dates list item...
+    page[id].replace :partial => "training_date", :collection => [ @training_date ]
+  end
+
+
+else # <----------------------------------------  Show [Edit TrainingDate] form.
+
+  if params[:cancel].blank?                       # Called from training_dates list item...
+    if @previous                                  # Hide open [Edit TrainingDate] form if any.
+      if @previous.is_a?(TrainingDate)
+        page[dom_id(@previous)].replace :partial => "training_date", :collection => [ @previous ]
+      else
+        page.call "crm.flick", "training_date_#{@previous}", :remove
+      end
+    end
+    page.call "crm.highlight_off", id             # Disable onMouseOver for the list item.
+    page.call "crm.hide_form", :create_training_date    # Hide [Create TrainingDate] form if any.
+    page[id].replace_html :partial => "edit"      # Show [Edit TrainingDate] form.
+
+  elsif params[:cancel].false?                    # Called from title of the training_date landing page...
+    page[:edit_training_date].replace_html :partial => "edit"
+    page.call "crm.flip_form", :edit_training_date
+    page.call "crm.set_title", :edit_training_date, "#{t :edit} #{h(@training_date.name)}"
+  end
+
+  page.call "crm.date_select_popup", :training_date_startdate
+  page[:training_date_name].focus
+
+  hook(:edit_training_date_rjs, self, :page => page)
+end

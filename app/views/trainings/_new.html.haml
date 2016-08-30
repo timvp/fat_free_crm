@@ -1,0 +1,15 @@
+= simple_form_for(@training, :html => one_submit_only(:training), :remote => true) do |f|
+  = link_to_close new_training_path
+  = f.hidden_field :user_id
+  = f.error_messages :object_name => t('training')
+
+  = render "trainings/top_section", :f => f
+  -#= render "trainings/extra",       :f => f
+  = render "fields/groups", :f => f
+  = render "entities/permissions", :f => f, :entity => @training
+
+  .buttonbar
+    = f.submit t(:create_training), :onclick => "crm.create_contact()"
+    #{t :or}
+    = link_to_cancel new_training_path
+

@@ -1,0 +1,13 @@
+= form_for(@mailinglist, :html => one_submit_only(:mailinglist), :remote => true) do |f|
+  = link_to_close new_mailinglist_path
+
+  = f.error_messages :object_name => t('mailinglist')
+
+  = render "mailinglists/top_section",   :f => f
+  -#= render "mailinglists/extra",       :f => f
+  -#= render "mailinglists/web",         :f => f
+  -#= render "mailinglists/permissions", :f => f
+  .buttonbar
+    = f.submit t(:create_mailinglist)
+    #{t :or}
+    = link_to_cancel new_mailinglist_path

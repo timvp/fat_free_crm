@@ -1,0 +1,6 @@
+if params[:cancel].true?
+  page.call "crm.hide_preview_window", :preview
+else
+  page[:preview].replace_html :partial => "preview"
+  page.call "crm.show_preview_window", :preview
+end

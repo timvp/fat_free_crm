@@ -1,0 +1,25 @@
+= styles_for :evaluation
+
+.title_tools
+  -#= link_to_inline(:create_evaluation, new_evaluation_path, :text=> t(:create_evaluation)) << " | "
+  - if Setting.advanced_search_enabled
+    = link_to_inline(:advanced_search, advanced_search_evaluations_path, :text => t(:advanced_search)) << " | "
+    -#= link_to_inline(:options, options_evaluations_path, :text=> t(:options))
+
+.title
+  %span#create_evaluation_title #{t :evaluations}
+  = image_tag("loading.gif", :size => "16x16", :id => "loading", :style => "display: none;")
+.remote#options{ hidden }
+.remote#create_evaluation{ hidden }
+.remote#advanced_search{ hidden_if(!params[:q]) }
+  - if params[:q]
+    = render :partial => "advanced_search"
+
+.list#evaluations
+  - if @evaluations.any?
+    = render @evaluations
+  - else
+    = render "shared/empty"
+
+-#paginate= render "shared/paginate"
+-#export= render "shared/export"

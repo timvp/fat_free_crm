@@ -74,6 +74,17 @@ class EntitiesController < ApplicationController
   def opportunities
   end
 
+  def trainings
+  end
+
+  def evaluations
+  end
+  
+  def mailings
+  end
+
+
+
   # GET /entities/versions                                                 AJAX
   #----------------------------------------------------------------------------
   def versions

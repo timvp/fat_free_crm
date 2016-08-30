@@ -5,6 +5,7 @@
 #------------------------------------------------------------------------------
 class ContactsController < EntitiesController
   before_action :get_accounts, only: [:new, :create, :edit, :update]
+  before_filter :get_data_for_sidebar, :only => [ :index, :update, :create, :destroy ]
 
   # GET /contacts
   #----------------------------------------------------------------------------
@@ -49,6 +50,8 @@ class ContactsController < EntitiesController
   #----------------------------------------------------------------------------
   def edit
     @account = @contact.account || Account.new(user: current_user)
+    @contact_type = Setting.unroll(:contact_type)
+
     if params[:previous].to_s =~ /(\d+)\z/
       @previous = Contact.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
@@ -140,6 +143,31 @@ class ContactsController < EntitiesController
       format.js { render :index }
     end
   end
+  
+  # POST /contacts/filter                                                  AJAX
+  #----------------------------------------------------------------------------
+  def filter
+    session[:contacts_filter] = params[:type_state]
+    @contacts = get_contacts(:page => 1)
+    render :index
+  end
+  
+  def send_mail
+  	@contact = Contact.my.find(params[:id])
+  	@emailComposition = EmailComposition.new
+  	@emailComposition.subject = 'Mail Talenhuis'
+  	@emailComposition.contactids = [@contact.id]
+  	@emailComposition.save_as_mail = false
+  end
+
+  def send_multiple_mails
+	  @contacts = Contact.find(params[:contact_ids])
+    @emailComposition = EmailComposition.new
+  	@emailComposition.subject = 'Mail Talenhuis'
+  	@emailComposition.contactids = params[:contact_ids]
+  	@emailComposition.save_as_mail = false
+  end
+
 
   private
 
@@ -174,5 +202,20 @@ class ContactsController < EntitiesController
       flash[:notice] = t(:msg_asset_deleted, @contact.full_name)
       redirect_to contacts_path
     end
+  end
+  
+    #---------------------------------------------------------------------------
+  def get_data_for_sidebar
+    @contact_type_total = Hash[
+      Setting.contact_type.map do |key|
+        #[ key, Contact.my.where(:contact_type => key.to_s).count ]
+        [ key, Contact.my.where("contact_type like '%#{key.to_s}%'").count ]
+      end
+    ]
+    
+    categorized = @contact_type_total.values.sum
+    @contact_type_total[:all] = Contact.my.count
+    #@contact_type_total[:other] = Contact.my.where("contact_type is null or contact_type ='---'")
+    
   end
 end

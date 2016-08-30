@@ -1,0 +1,23 @@
+id = called_from_landing_page? ? "edit_document" : dom_id(@document)
+
+if @document.errors.empty?
+  if called_from_landing_page?
+    page.call "crm.flip_form", :edit_document
+    page.call "crm.set_title", :edit_document, @document.name
+    page << refresh_sidebar(:show, :summary)
+  else
+    page[id].replace :partial => "document", :collection => [ @document ]
+    page[id].visual_effect :highlight, :duration => 1.0
+    page << refresh_sidebar(:index, :filters)
+  end
+else
+  page[id].replace_html :partial => "edit"
+  #page.call "crm.date_select_popup", :document_starts_on
+  #page.call "crm.date_select_popup", :document_ends_on
+  page[id].visual_effect :shake, :duration => 0.25, :distance => 6
+  if @document.errors[:name].blank? and @document.errors[:ends_on].present?
+    page[:document_ends_on].focus
+  else
+    page[:document_name].focus
+  end
+end

@@ -1,0 +1,22 @@
+%li.highlight[document]
+
+  %ul.tools
+
+    - if can?(:update, document)
+      %li= link_to_edit(document)
+
+    -# if shown_on_landing_page?
+      %li= link_to_discard(document)
+
+    - if can?(:destroy, document)
+      %li= link_to_delete(document)
+
+  .tools{ invisible, :id => dom_id(document, :tools) }
+    = link_to_edit(document) + " | "
+    = link_to_delete(document)
+
+  .document
+    %strong
+      = link_to(document.name, document.document.url)
+    %tt
+      = "| " + document.description if document.description?

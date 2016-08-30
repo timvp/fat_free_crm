@@ -12,7 +12,7 @@
       %b= link_to_email(@account.email, 30)
 
   %div
-    - if @account.toll_free_phone
+    -# if @account.toll_free_phone
       #{t :phone_toll_free}: <b>#{@account.toll_free_phone}</b><br />
 
     - if @account.phone

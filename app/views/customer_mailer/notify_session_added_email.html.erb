@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Beste <%= @contact.first_name %><p>
+    
+    <p>Volgende sessie van de training <%= @training_date.training.name %> is nieuw :</p>    
+    
+    <p>
+      Datum : <%= l(@training_date.startdate, :format => :mmddyyyy) %></br>
+      Begint om :<%= l(@training_date.starttime, :format => :hhmm) %></br>
+      Duur : <%= l(@training_date.duration, :format => :hhmm) %></br>
+      Opmerking : <%=h(@training_date.remark).gsub(/\n/, '<br/>')%>
+      Status : <%= t(@training_date.status) %>
+    </p>
+    
+    <p>
+      <a href="http://klantenportaal.talenhuis.be/trainings/<%= @training_date.training_id%>">Bekijk deze training op HT klantenportaal</a>
+    </p>
+
+    
+    <p>
+      Met vriendelijke groeten<br />
+      Het Talenhuis<br />
+      www.talenhuis.be<br />
+      klantenportaal.talenhuis.be<br />
+    </p> 
+  </body>
+</html>
